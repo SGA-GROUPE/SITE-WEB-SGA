@@ -477,6 +477,13 @@
   var viewDevis = document.getElementById('view-devis');
   function showView(hash){
     if(hash === '#devis'){
+      /* Only wipe the wizard if the previous visit ended in a successful
+         send — a fresh request should start from a blank form. If the
+         visitor is just mid-way through filling it in (or hit an error)
+         and navigates away/back, their answers must stay intact. */
+      if(typeof devisSuccessfullySent !== 'undefined' && devisSuccessfullySent && typeof resetWizardForm === 'function'){
+        resetWizardForm();
+      }
       viewHome.hidden = true;
       viewDevis.hidden = false;
       window.scrollTo(0,0);
@@ -496,6 +503,7 @@
 
   var TOTAL_STEPS = 5;
   var currentStep = 1;
+  var devisSuccessfullySent = false;
   var steps = form.querySelectorAll('.wizard-step[data-step]');
   var progressFill = document.getElementById('progressFill');
   var progressSteps = document.querySelectorAll('.progress-steps .ps');
@@ -733,18 +741,16 @@
 
   /* ---------- Submit — automatic e-mail sending ----------
      DEVIS_MAIL_CONFIG is the single place to reconfigure where/how quote
-     requests are sent.
+     requests are sent once the site is moved to its own hosting:
        - recipientEmail : inbox that receives the request
        - senderName     : display name shown as the sender of the notification
        - subjectPrefix  : text prepended to the customer's name in the e-mail subject
-       - endpoint       : GitHub Pages serves static files only (no PHP), so this stays
-                           empty to use the FormSubmit.co relay
-                           (https://formsubmit.co/ajax/<recipientEmail>, no backend
-                           required). If this site is later moved to a host that runs
-                           PHP, set this to an absolute URL such as "/send-devis.php"
-                           to post to your own mail backend instead — no other code
-                           change is required, the JSON payload below is the same
-                           shape either way. */
+       - endpoint       : leave empty to keep using the FormSubmit.co relay
+                           (https://formsubmit.co/ajax/<recipientEmail>, no backend required).
+                           Set it to an absolute URL (e.g. "/send-devis.php", see the
+                           bundled send-devis.php) to post to your own mail backend instead —
+                           no other code change is required, the JSON payload below is the
+                           same shape either way. */
   var DEVIS_MAIL_CONFIG = {
     recipientEmail: 'loris@sga-groupe.fr',
     senderName: 'Site web SGA Groupe',
@@ -856,7 +862,31 @@
     var errorBox = document.getElementById('devisErrorBox');
     if(successBox){ successBox.hidden = !success; }
     if(errorBox){ errorBox.hidden = !!success; }
+    devisSuccessfullySent = !!success;
     goToStep('success');
+  }
+
+  /* Wipes the wizard back to a blank step 1 — used only when re-opening the
+     form after a request was already sent successfully, so a second request
+     starts clean. Never called while the visitor is mid-form or on the
+     error screen, so an accidental "back to home" never loses what they
+     already typed. */
+  function resetWizardForm(){
+    form.reset();
+    form.querySelectorAll('.choice-group .choice-btn.selected').forEach(function(b){ b.classList.remove('selected'); });
+    form.querySelectorAll('.field-error').forEach(function(el){ el.classList.remove('field-error'); });
+    form.querySelectorAll('.error-msg.show').forEach(function(el){ el.classList.remove('show'); });
+    if(merchList){
+      merchList.innerHTML = '';
+      addMerchRow();
+    }
+    var successBox = document.getElementById('devisSuccessBox');
+    var errorBox = document.getElementById('devisErrorBox');
+    if(successBox){ successBox.hidden = false; }
+    if(errorBox){ errorBox.hidden = true; }
+    devisIsSubmitting = false;
+    devisSuccessfullySent = false;
+    goToStep(1);
   }
 
   var retryBtn = document.getElementById('retrySubmitBtn');
