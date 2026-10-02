@@ -1,0 +1,121 @@
+SITE SGA GROUPE — GUIDE COMPLET POUR GITHUB PAGES (DE A À Z)
+================================================================
+
+Ce dossier est volontairement "à plat" (aucun sous-dossier) : tous les
+fichiers sont au même niveau. C'est fait exprès, pour éviter le problème
+rencontré la dernière fois (l'upload qui perd la structure des dossiers).
+Ici il n'y a plus de dossier à préserver : vous sélectionnez tout, vous
+glissez tout, ça ne peut pas se casser.
+
+CONTENU DU DOSSIER (22 fichiers, tous au même niveau)
+-------------------------------------------------------
+index.html                        → la page du site
+style.css                         → les styles
+script.js                         → le comportement du site
+18 fichiers .webp                 → le logo, les drapeaux, les photos
+CNAME                              → indique à GitHub votre domaine (sga-groupe.fr)
+robots.txt, sitemap.xml           → fichiers SEO
+
+
+ÉTAPE 0 — SI VOUS AVEZ DÉJÀ UN DÉPÔT AVEC DES FICHIERS DEDANS
+------------------------------------------------------------------
+Supprimez-le et recréez-en un propre (plus simple que de nettoyer les
+fichiers mal placés) :
+1. Sur github.com, ouvrez votre dépôt existant.
+2. Settings → tout en bas → "Danger Zone" → "Delete this repository".
+3. Tapez le nom du dépôt pour confirmer, puis supprimez.
+
+
+ÉTAPE 1 — CRÉER LE DÉPÔT
+----------------------------
+1. Sur github.com, cliquez sur le "+" en haut à droite → "New repository".
+2. Nom du dépôt : ce que vous voulez (ex. "sga-groupe-site").
+3. Laissez-le en "Public" (nécessaire pour GitHub Pages gratuit).
+4. Ne cochez AUCUNE case d'initialisation (pas de README, pas de
+   .gitignore, pas de licence) — le dépôt doit être complètement vide.
+5. Cliquez "Create repository".
+
+
+ÉTAPE 2 — ENVOYER LES FICHIERS (LE POINT CRITIQUE)
+--------------------------------------------------------
+1. Sur la page du dépôt vide, cliquez sur le lien bleu
+   "uploading an existing file".
+2. Ouvrez ce dossier dans votre explorateur de fichiers (celui que vous
+   avez décompressé depuis le zip).
+3. Sélectionnez TOUS les fichiers à l'intérieur (Ctrl+A sur Windows,
+   Cmd+A sur Mac) — vous devez voir les 22 fichiers surlignés.
+4. Glissez-les TOUS ENSEMBLE en un seul geste dans la zone de dépôt
+   GitHub ("Drag files here to add them to your repository").
+5. Attendez que la liste des fichiers affichés corresponde bien aux
+   22 fichiers (comptez-les si besoin).
+6. En bas de page, dans "Commit changes", laissez le message par défaut
+   et cliquez sur "Commit changes directly to the main branch".
+
+Important : ne glissez JAMAIS le fichier .zip lui-même (GitHub ne
+l'extrait pas), et ne glissez pas un dossier parent contenant ce
+dossier — seulement les 22 fichiers qui sont directement dedans.
+
+
+ÉTAPE 3 — ACTIVER GITHUB PAGES
+------------------------------------
+1. Dans le dépôt, allez dans Settings (menu du dépôt, pas celui du
+   compte) → Pages (menu de gauche).
+2. Sous "Build and deployment" → Source : choisissez
+   "Deploy from a branch".
+3. Branche : main, dossier : / (root). Cliquez "Save".
+4. Toujours sur cette page, sous "Custom domain" : entrez
+   sga-groupe.fr puis "Save" (normalement déjà pré-rempli grâce au
+   fichier CNAME envoyé à l'étape 2).
+
+
+ÉTAPE 4 — CONFIGURER VOTRE NOM DE DOMAINE
+------------------------------------------------
+Chez le prestataire où vous avez acheté sga-groupe.fr (OVH, Gandi,
+LWS...), dans la zone DNS du domaine, ajoutez :
+
+Pour le domaine racine (sga-groupe.fr) — 4 enregistrements de type A :
+    185.199.108.153
+    185.199.109.153
+    185.199.110.153
+    185.199.111.153
+
+Pour le sous-domaine www (www.sga-groupe.fr) — 1 enregistrement CNAME :
+    <votre-identifiant-github>.github.io
+    (remplacez par votre pseudo GitHub, visible dans l'URL de votre
+    dépôt : github.com/VOTRE-IDENTIFIANT/nom-du-depot)
+
+La propagation peut prendre de quelques minutes à 24h.
+
+
+ÉTAPE 5 — ACTIVER LE HTTPS
+--------------------------------
+Revenez sur Settings → Pages une fois le DNS propagé (un message de
+validation verte apparaît). Cochez "Enforce HTTPS". Peut prendre
+jusqu'à 24h après la validation du domaine.
+
+
+ÉTAPE 6 — ACTIVER L'ENVOI DU FORMULAIRE (NE PAS OUBLIER)
+----------------------------------------------------------------
+Le formulaire de devis utilise FormSubmit.co (gratuit, sans serveur).
+Il exige une activation unique :
+1. Une fois le site en ligne, envoyez une demande de devis test depuis
+   le site lui-même.
+2. Un e-mail "Activate your form" doit arriver sur loris@sga-groupe.fr
+   (vérifiez les spams).
+3. Cliquez sur le lien d'activation dans cet e-mail.
+4. À partir de là, toutes les demandes suivantes arrivent
+   automatiquement, sans autre action de votre part.
+
+
+VÉRIFICATION FINALE
+------------------------
+- Le site s'affiche correctement (mise en forme, images, logo) sur
+  https://sga-groupe.fr une fois le DNS propagé — en attendant, vous
+  pouvez déjà vérifier sur https://VOTRE-IDENTIFIANT.github.io/NOM-DU-DEPOT/
+- Le cadenas HTTPS est actif
+- Une demande de devis test arrive bien par e-mail (après activation)
+- Le site s'affiche correctement sur mobile
+
+Si quoi que ce soit ne fonctionne pas après ces étapes, donnez-moi
+l'URL de votre dépôt GitHub (github.com/votre-identifiant/nom-du-depot)
+et je vérifie directement ce qui manque ou ce qui est mal placé.
