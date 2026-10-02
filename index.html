@@ -558,7 +558,7 @@
         <img loading="lazy" class="brand-light" src="logo-sga.webp" alt="SGA Groupe">
         <img loading="lazy" class="brand-dark" src="logo-sga-blanc.webp" alt="SGA Groupe">
       </a>
-      <div style="display:flex;align-items:center;gap:16px;">
+      <div class="devis-header-actions">
         <a href="tel:+33764191017" class="devis-phone">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8.3 6.7 15 15 15l3-4-6-3-2 2c-2-1-4-3-5-5l2-2-3-6-4 3Z"/></svg>
           <span class="devis-phone-text">07 64 19 10 17</span>
@@ -694,6 +694,15 @@
                 <button type="button" class="choice-btn" data-value="pas_hayon" data-i18n="s4.equip.nohayon">Pas de hayon nécessaire</button>
                 <button type="button" class="choice-btn" data-value="autre_besoin" data-i18n="s4.equip.autre">Autre besoin</button>
               </div>
+            </div>
+            <div class="field" id="hayonLocationField" hidden>
+              <label data-i18n-html="s4.hayonLocLabel">Où le hayon est-il nécessaire ? <span class="req">*</span></label>
+              <div class="choice-group" id="hayonLocationGroup" data-name="hayonLocation">
+                <button type="button" class="choice-btn" data-value="depart" data-i18n="s4.hayonLoc.depart">Au départ</button>
+                <button type="button" class="choice-btn" data-value="arrivee" data-i18n="s4.hayonLoc.arrivee">À l'arrivée</button>
+                <button type="button" class="choice-btn" data-value="depart_arrivee" data-i18n="s4.hayonLoc.both">Au départ et à l'arrivée</button>
+              </div>
+              <span class="error-msg" id="hayonLocationError" data-i18n="err.required">Ce champ est requis.</span>
             </div>
             <div class="field">
               <label for="f-besoin" data-i18n="s4.needLabel">Besoin spécifique / information complémentaire</label>

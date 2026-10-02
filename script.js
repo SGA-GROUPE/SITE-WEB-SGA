@@ -185,19 +185,21 @@
       's1.nameLabel':'Nom / prénom ou société <span class="req">*</span>','s1.namePh':'Jean Dupont ou nom de société',
       's1.phoneLabel':'Téléphone <span class="req">*</span>','s1.phonePh':'06 00 00 00 00',
       's1.emailLabel':'E-mail <span class="req">*</span>','s1.emailPh':'vous@exemple.fr',
-      'err.required':'Ce champ est requis.','btn.continue':'Continuer','btn.back':'Retour','city.noMatch':'Aucune ville trouvée',
+      'err.required':'Ce champ est requis.','err.weight':'Veuillez indiquer un poids valide.','btn.continue':'Continuer','btn.back':'Retour','city.noMatch':'Aucune ville trouvée',
       's2.title':'Votre trajet','s2.sub':"D'où part la marchandise, et où doit-elle arriver ?",
       's2.fromLabel':'Ville de départ <span class="req">*</span>','s2.fromPh':'Ville ou code postal',
       's2.toLabel':"Ville d'arrivée <span class=\"req\">*</span>",'s2.toPh':'Ville ou code postal',
       's3.title':'Votre marchandise','s3.sub':'Un ou plusieurs types de palettes / marchandises à transporter.',
       's3.addMerch':'Ajouter un autre type de marchandise',
       'merch.typeLabel':'Type de palette','merch.opt.europe':'Palette Europe / EUR – 120 × 80 cm','merch.opt.industrielle':'Palette industrielle – 120 × 100 cm','merch.opt.autre':'Autre / Hors norme',
-      'merch.qtyLabel':'Nombre de palettes','merch.weightLabel':'Poids','merch.weightPh':'Ex : 350',
+      'merch.qtyLabel':'Nombre de palettes','merch.weightLabel':'Poids (kg) <span class="req">*</span>','merch.weightPh':'Ex : 350',
       'merch.weightMode.unit':'kg / palette','merch.weightMode.total':'kg au total',
+      'merch.gerbableLabel':'Gerbable','merch.gerbable.yes':'Gerbable','merch.gerbable.no':'Non gerbable',
       'merch.dim.l':'Longueur (cm)','merch.dim.w':'Largeur (cm)','merch.dim.h':'Hauteur (cm)','merch.removeAria':'Supprimer',
       's4.title':'Véhicule & équipements','s4.sub':'Le type de véhicule et les équipements nécessaires.',
       's4.vehicleLabel':'Type de véhicule','s4.vehicle.tautliner':'Tautliner','s4.vehicle.plateau':'Plateau','s4.vehicle.fourgon':'Fourgon / camion','s4.vehicle.autre':'Autre',
       's4.equipLabel':'Équipements nécessaires','s4.equip.hayon':'Hayon','s4.equip.nohayon':'Pas de hayon nécessaire','s4.equip.autre':'Autre besoin',
+      's4.hayonLocLabel':'Où le hayon est-il nécessaire ? <span class="req">*</span>','s4.hayonLoc.depart':'Au départ','s4.hayonLoc.arrivee':'À l\'arrivée','s4.hayonLoc.both':'Au départ et à l\'arrivée',
       's4.needLabel':'Besoin spécifique / information complémentaire','s4.needPh':'Précisions utiles pour votre transport (optionnel)',
       'btn.viewRecap':'Voir le récapitulatif',
       's5.title':'Récapitulatif','s5.sub':"Vérifiez votre demande avant l'envoi.",
@@ -216,6 +218,7 @@
       'mail.specificHeader':'BESOIN SPECIFIQUE','mail.perPallet':'par palette','mail.total':'au total','mail.dims':'dims','mail.notSpecified':'Non précisé',
       'vehicle.tautliner':'Tautliner','vehicle.plateau':'Plateau','vehicle.fourgon':'Fourgon / camion','vehicle.autre':'Autre',
       'hayon.hayon':'Hayon nécessaire','hayon.pas_hayon':'Pas de hayon nécessaire','hayon.autre_besoin':'Autre besoin',
+      'hayonLoc.depart':'au départ','hayonLoc.arrivee':'à l\'arrivée','hayonLoc.depart_arrivee':'au départ et à l\'arrivée',
       'palette.europe':'Palette Europe / EUR (120 × 80 cm)','palette.industrielle':'Palette industrielle (120 × 100 cm)','palette.autre':'Autre / Hors norme',
       'meta.title':'SGA Groupe — Affréteur routier national & international'
     },
@@ -266,19 +269,21 @@
       's1.nameLabel':'Name or company <span class="req">*</span>','s1.namePh':'John Smith or company name',
       's1.phoneLabel':'Phone <span class="req">*</span>','s1.phonePh':'+33 6 00 00 00 00',
       's1.emailLabel':'Email <span class="req">*</span>','s1.emailPh':'you@example.com',
-      'err.required':'This field is required.','btn.continue':'Continue','btn.back':'Back','city.noMatch':'No matching city found',
+      'err.required':'This field is required.','err.weight':'Please enter a valid weight.','btn.continue':'Continue','btn.back':'Back','city.noMatch':'No matching city found',
       's2.title':'Your route','s2.sub':'Where does the shipment start, and where does it need to arrive?',
       's2.fromLabel':'Departure city <span class="req">*</span>','s2.fromPh':'City or postal code',
       's2.toLabel':'Arrival city <span class="req">*</span>','s2.toPh':'City or postal code',
       's3.title':'Your goods','s3.sub':'One or more types of pallets / goods to transport.',
       's3.addMerch':'Add another type of goods',
       'merch.typeLabel':'Pallet type','merch.opt.europe':'Euro pallet / EUR – 120 × 80 cm','merch.opt.industrielle':'Industrial pallet – 120 × 100 cm','merch.opt.autre':'Other / Oversized',
-      'merch.qtyLabel':'Number of pallets','merch.weightLabel':'Weight','merch.weightPh':'E.g. 350',
+      'merch.qtyLabel':'Number of pallets','merch.weightLabel':'Weight (kg) <span class="req">*</span>','merch.weightPh':'E.g. 350',
       'merch.weightMode.unit':'kg / pallet','merch.weightMode.total':'kg total',
+      'merch.gerbableLabel':'Stackable','merch.gerbable.yes':'Stackable','merch.gerbable.no':'Not stackable',
       'merch.dim.l':'Length (cm)','merch.dim.w':'Width (cm)','merch.dim.h':'Height (cm)','merch.removeAria':'Remove',
       's4.title':'Vehicle & equipment','s4.sub':'The vehicle type and any equipment you need.',
       's4.vehicleLabel':'Vehicle type','s4.vehicle.tautliner':'Tautliner','s4.vehicle.plateau':'Flatbed','s4.vehicle.fourgon':'Box van / truck','s4.vehicle.autre':'Other',
       's4.equipLabel':'Equipment needed','s4.equip.hayon':'Tail lift','s4.equip.nohayon':'No tail lift needed','s4.equip.autre':'Other requirement',
+      's4.hayonLocLabel':'Where is the tail lift needed? <span class="req">*</span>','s4.hayonLoc.depart':'At pickup','s4.hayonLoc.arrivee':'At delivery','s4.hayonLoc.both':'At pickup and delivery',
       's4.needLabel':'Specific needs / additional information','s4.needPh':'Any useful details for your transport (optional)',
       'btn.viewRecap':'View summary',
       's5.title':'Summary','s5.sub':'Please review your request before sending.',
@@ -297,6 +302,7 @@
       'mail.specificHeader':'SPECIFIC REQUIREMENTS','mail.perPallet':'per pallet','mail.total':'total','mail.dims':'dims','mail.notSpecified':'Not specified',
       'vehicle.tautliner':'Tautliner','vehicle.plateau':'Flatbed','vehicle.fourgon':'Box van / truck','vehicle.autre':'Other',
       'hayon.hayon':'Tail lift required','hayon.pas_hayon':'No tail lift needed','hayon.autre_besoin':'Other requirement',
+      'hayonLoc.depart':'at pickup','hayonLoc.arrivee':'at delivery','hayonLoc.depart_arrivee':'at pickup and delivery',
       'palette.europe':'Euro pallet / EUR (120 × 80 cm)','palette.industrielle':'Industrial pallet (120 × 100 cm)','palette.autre':'Other / Oversized',
       'meta.title':'SGA Groupe — National & International Freight Forwarder'
     }
@@ -538,11 +544,27 @@
     required.forEach(function(inp){
       var valid = inp.value && inp.value.trim().length > 0;
       if(inp.type === 'email' && valid){ valid = /\S+@\S+\.\S+/.test(inp.value); }
+      if(inp.type === 'number' && valid){
+        var n2 = parseFloat(inp.value);
+        valid = !isNaN(n2) && isFinite(n2) && n2 > 0;
+      }
       inp.classList.toggle('field-error', !valid);
-      var err = inp.parentElement.querySelector('.error-msg');
+      var fieldWrap = inp.closest('.field') || inp.parentElement;
+      var err = fieldWrap ? fieldWrap.querySelector('.error-msg') : null;
       if(err){ err.classList.toggle('show', !valid); }
       if(!valid){ ok = false; }
     });
+    /* Hayon: once "Hayon" is selected, where it's needed becomes mandatory. */
+    if(n === 4){
+      var hayonCode = getChoiceValue('hayonGroup');
+      var locErr = document.getElementById('hayonLocationError');
+      if(hayonCode === 'hayon' && !getChoiceValue('hayonLocationGroup')){
+        ok = false;
+        if(locErr){ locErr.classList.add('show'); }
+      } else if(locErr){
+        locErr.classList.remove('show');
+      }
+    }
     return ok;
   }
 
@@ -558,14 +580,29 @@
     });
   });
 
-  /* ---------- Choice groups (single select buttons) ---------- */
-  document.querySelectorAll('.choice-group').forEach(function(group){
-    group.addEventListener('click', function(e){
-      var btn = e.target.closest('.choice-btn');
-      if(!btn) return;
-      group.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('selected'); });
-      btn.classList.add('selected');
-    });
+  /* ---------- Choice groups (single select buttons) ----------
+     Delegated on the document (rather than bound per-group at load time) so
+     that groups created later — the per-merchandise-row "gerbable" choice —
+     work identically to the static ones without needing their own wiring. */
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.choice-group .choice-btn');
+    if(!btn) return;
+    var group = btn.closest('.choice-group');
+    group.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    if(group.id === 'hayonGroup'){
+      var locField = document.getElementById('hayonLocationField');
+      if(locField){
+        var needsLoc = btn.getAttribute('data-value') === 'hayon';
+        locField.hidden = !needsLoc;
+        if(!needsLoc){
+          var locGroup = document.getElementById('hayonLocationGroup');
+          if(locGroup){ locGroup.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('selected'); }); }
+          var locErr = document.getElementById('hayonLocationError');
+          if(locErr){ locErr.classList.remove('show'); }
+        }
+      }
+    }
   });
   function getChoiceValue(groupId){
     var group = document.getElementById(groupId);
@@ -607,13 +644,21 @@
         '</div>'+
       '</div>'+
       '<div class="field">'+
-        '<label data-i18n="merch.weightLabel">Poids</label>'+
+        '<label data-i18n-html="merch.weightLabel">Poids (kg) <span class="req">*</span></label>'+
         '<div class="weight-inline">'+
-          '<input type="number" class="merch-weight" data-id="'+id+'" min="0" placeholder="Ex : 350" data-i18n-ph="merch.weightPh">'+
+          '<input type="number" class="merch-weight" data-id="'+id+'" min="0" step="any" placeholder="Ex : 350" data-i18n-ph="merch.weightPh" required>'+
           '<select class="merch-weight-mode" data-id="'+id+'">'+
             '<option value="unitaire" data-i18n="merch.weightMode.unit">kg / palette</option>'+
             '<option value="total" data-i18n="merch.weightMode.total">kg au total</option>'+
           '</select>'+
+        '</div>'+
+        '<span class="error-msg" data-i18n="err.weight">Veuillez indiquer un poids valide.</span>'+
+      '</div>'+
+      '<div class="field">'+
+        '<label data-i18n="merch.gerbableLabel">Gerbable</label>'+
+        '<div class="choice-group merch-gerbable-group" data-id="'+id+'">'+
+          '<button type="button" class="choice-btn" data-value="gerbable" data-i18n="merch.gerbable.yes">Gerbable</button>'+
+          '<button type="button" class="choice-btn" data-value="non_gerbable" data-i18n="merch.gerbable.no">Non gerbable</button>'+
         '</div>'+
       '</div>'+
       '<div class="merch-dims" data-id="'+id+'">'+
@@ -677,12 +722,16 @@
       var qty = row.querySelector('.merch-qty').value;
       var weight = row.querySelector('.merch-weight').value;
       var weightMode = row.querySelector('.merch-weight-mode').value;
+      var gerbableBtn = row.querySelector('.merch-gerbable-group .choice-btn.selected');
+      var gerbableCode = gerbableBtn ? gerbableBtn.getAttribute('data-value') : '';
       var item = {
         type: type,
         typeLabel: t('palette.'+type) || type,
         qty: qty,
         weight: weight,
-        weightMode: weightMode === 'total' ? t('mail.total') : t('mail.perPallet')
+        weightMode: weightMode === 'total' ? t('mail.total') : t('mail.perPallet'),
+        gerbable: gerbableCode,
+        gerbableLabel: gerbableCode ? t('merch.gerbable.'+(gerbableCode === 'gerbable' ? 'yes' : 'no')) : ''
       };
       if(type === 'autre'){
         item.l = row.querySelector('.merch-l').value;
@@ -703,14 +752,17 @@
     var arrivee = document.getElementById('f-arrivee').value;
     var vehiculeCode = getChoiceValue('vehiculeGroup');
     var hayonCode = getChoiceValue('hayonGroup');
+    var hayonLocCode = getChoiceValue('hayonLocationGroup');
     var vehicule = vehiculeCode ? t('vehicle.'+vehiculeCode) : '—';
     var hayon = hayonCode ? t('hayon.'+hayonCode) : '—';
+    if(hayonCode === 'hayon' && hayonLocCode){ hayon += ' (' + t('hayonLoc.'+hayonLocCode) + ')'; }
     var besoin = document.getElementById('f-besoin').value;
     var merch = collectMerch();
 
     var merchHtml = merch.map(function(m){
       var line = '<div>' + m.qty + '× <b>' + m.typeLabel + '</b>';
       if(m.weight){ line += ' — ' + m.weight + ' kg (' + m.weightMode + ')'; }
+      if(m.gerbableLabel){ line += ' — ' + m.gerbableLabel; }
       if(m.type === 'autre' && (m.l || m.w || m.h)){ line += ' — ' + (m.l||'?') + '×' + (m.w||'?') + '×' + (m.h||'?') + ' cm'; }
       line += '</div>';
       return line;
@@ -764,6 +816,12 @@
     e.preventDefault();
     if(devisIsSubmitting){ return; }
 
+    /* Defense in depth: re-check the steps that carry mandatory fields
+       (weight, hayon location) before anything is actually sent, in case
+       the recap was reached any other way than the normal "next" flow. */
+    if(!validateStep(3)){ goToStep(3); return; }
+    if(!validateStep(4)){ goToStep(4); return; }
+
     var nom = document.getElementById('f-nom').value;
     var tel = document.getElementById('f-tel').value;
     var email = document.getElementById('f-email').value;
@@ -771,8 +829,10 @@
     var arrivee = document.getElementById('f-arrivee').value;
     var vehiculeCode = getChoiceValue('vehiculeGroup');
     var hayonCode = getChoiceValue('hayonGroup');
+    var hayonLocCode = getChoiceValue('hayonLocationGroup');
     var vehicule = vehiculeCode ? t('vehicle.'+vehiculeCode) : t('mail.notSpecified');
     var hayon = hayonCode ? t('hayon.'+hayonCode) : t('mail.notSpecified');
+    if(hayonCode === 'hayon' && hayonLocCode){ hayon += ' (' + t('hayonLoc.'+hayonLocCode) + ')'; }
     var besoin = document.getElementById('f-besoin').value;
     var merch = collectMerch();
 
@@ -793,6 +853,7 @@
     merch.forEach(function(m, i){
       var l = (i+1) + '. ' + m.qty + ' x ' + m.typeLabel;
       if(m.weight){ l += ' — ' + m.weight + ' kg (' + m.weightMode + ')'; }
+      if(m.gerbableLabel){ l += ' — ' + m.gerbableLabel; }
       if(m.type === 'autre' && (m.l || m.w || m.h)){ l += ' — ' + t('mail.dims') + ' ' + (m.l||'?') + 'x' + (m.w||'?') + 'x' + (m.h||'?') + ' cm'; }
       lines.push(l);
     });
@@ -876,6 +937,8 @@
     form.querySelectorAll('.choice-group .choice-btn.selected').forEach(function(b){ b.classList.remove('selected'); });
     form.querySelectorAll('.field-error').forEach(function(el){ el.classList.remove('field-error'); });
     form.querySelectorAll('.error-msg.show').forEach(function(el){ el.classList.remove('show'); });
+    var locField = document.getElementById('hayonLocationField');
+    if(locField){ locField.hidden = true; }
     if(merchList){
       merchList.innerHTML = '';
       addMerchRow();
