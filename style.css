@@ -414,6 +414,7 @@
   .team-card .avatar-fallback{width:96px;height:96px;border-radius:50%;margin:0 auto 16px;background:linear-gradient(135deg,var(--navy),var(--cyan));display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-head);font-weight:700;font-size:24px;}
   .team-card h3{font-size:17px;margin-bottom:2px;}
   .team-card .role{font-size:12.5px;font-weight:600;color:var(--cyan-600);text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;display:block;}
+  .team-card .role + .role-sub{margin-top:-10px;font-weight:500;color:var(--text-soft);text-transform:none;letter-spacing:.01em;font-size:13px;}
   .team-contact{display:flex;flex-direction:column;gap:7px;align-items:center;}
   .team-contact a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--text-soft);}
   .team-contact a:hover{color:var(--cyan-600);}

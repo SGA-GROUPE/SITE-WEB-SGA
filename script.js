@@ -12,7 +12,7 @@
       if(requested) return;
       requested = true;
       var s = document.createElement('script');
-      s.src = 'cities.js';
+      s.src = 'cities.js?v=456e4cda';
       s.async = true;
       s.onload = function(){
         SGA_CITIES.push.apply(SGA_CITIES, window.__SGA_CITIES || []);
@@ -174,7 +174,7 @@
     });
   });
 
-  /* ---------- i18n (FR / EN) ---------- */
+  /* ---------- i18n (FR / EN / ES) ---------- */
   var I18N = {
     fr: {
       'nav.about':'À propos','nav.activities':'Activités','nav.implantation':'Implantation','nav.team':'Contact',
@@ -216,7 +216,7 @@
       'impl.eyebrow':'Implantation & réseau','impl.title':'Deux implantations, un réseau qui couvre la France et l\'Europe',
       'impl.legend.siege':'Siège social','impl.legend.bureau':'Bureau','impl.legend.reseau':'Réseau France','impl.legend.eu':'Réseau Europe',
       'team.eyebrow':'Notre équipe','team.title':"Des interlocuteurs dédiés, pas un centre d'appels",
-      'role.director':'Directeur','role.intlForwarder':'Affréteur international','role.salesTransport':'Commercial transport','role.accounting':'Service comptabilité',
+      'role.director':'Directeur','role.intlForwarder':'Affréteur international','role.salesTransport':'Commercial transport','role.president':'Présidente / DAF','role.accounting':'Service comptabilité',
       'cta.title':'Prêt à optimiser votre transport ?','cta.text':'Un devis clair, une équipe réactive, un interlocuteur dédié à chaque étape.',
       'footer.tagline':"Affrètement, stockage et logistique — du local à l'international, sur tous les modes de transport.",
       'footer.navTitle':'Navigation','footer.contactTitle':'Contact',
@@ -305,7 +305,7 @@
       'impl.eyebrow':'Locations & network','impl.title':'Two locations, a network covering France and Europe',
       'impl.legend.siege':'Head office','impl.legend.bureau':'Office','impl.legend.reseau':'French network','impl.legend.eu':'European network',
       'team.eyebrow':'Our team','team.title':'Dedicated contacts, not a call centre',
-      'role.director':'Director','role.intlForwarder':'International freight forwarder','role.salesTransport':'Transport sales','role.accounting':'Accounting department',
+      'role.director':'Director','role.intlForwarder':'International freight forwarder','role.salesTransport':'Transport sales','role.president':'President / CFO','role.accounting':'Accounting department',
       'cta.title':'Ready to optimise your transport?','cta.text':'A clear quote, a responsive team, a dedicated contact at every step.',
       'footer.tagline':'Freight forwarding, storage and logistics — from local to international, across every transport mode.',
       'footer.navTitle':'Navigation','footer.contactTitle':'Contact',
@@ -353,6 +353,95 @@
       'hayonLoc.depart':'at pickup','hayonLoc.arrivee':'at delivery','hayonLoc.depart_arrivee':'at pickup and delivery',
       'palette.europe':'Euro pallet / EUR (120 × 80 cm)','palette.industrielle':'Industrial pallet (120 × 100 cm)','palette.camion':'Full truckload','palette.autre':'Other / Oversized',
       'meta.title':'SGA Groupe — National & International Freight Forwarder'
+    },
+    es: {
+      'nav.about':'Quiénes somos','nav.activities':'Actividades','nav.implantation':'Sedes','nav.team':'Contacto',
+      'cta.quote':'Solicitar presupuesto','devisBack':'Volver al sitio',
+      'hero.eyebrow':'Transitario nacional e internacional',
+      'svc.eyebrow':'Nuestros servicios en detalle','svc.title':'Contratación de transporte, transporte y almacenaje: lo que SGA hace por usted','svc.more':'Saber más',
+      'svc.1.title':'Contratación de transporte por carretera','svc.1.text':"Cargas completas o parciales, en Francia y en Europa: encontramos el transportista adecuado para su mercancía.",
+      'svc.2.title':'Transporte nacional e internacional','svc.2.text':"Carretera, ferrocarril, mar o aire: el modo de transporte adecuado para cada trayecto, de lo local a lo internacional.",
+      'svc.3.title':'Almacenaje y logística','svc.3.text':"Almacenamiento flexible para absorber sus picos de actividad y gestión de sus flujos de principio a fin.",
+      'footer.servicesTitle':'Servicios','footer.svc.affretement':'Contratación de transporte por carretera','footer.svc.transport':'Transporte nacional e internacional','footer.svc.stockage':'Almacenaje y logística','footer.svc.faq':'Preguntas frecuentes','footer.svc.about':'¿Quién es SGA Groupe?','footer.legal':'Aviso legal',
+      'hero.title':'Su mercancía entregada en el <em>lugar</em> justo, en el <em>momento</em> justo.',
+      'hero.sub':'SGA organiza su transporte por carretera, ferrocarril, mar y aire, de lo local a lo internacional, con un interlocutor dedicado desde la primera llamada hasta la entrega.',
+      'hero.ctaQuote':'Solicitar presupuesto gratuito','hero.ctaActivities':'Descubrir nuestras actividades','hero.fastReply':'Respuesta en 30 minutos',
+      'stat.collab':'Transportistas asociados','stat.clients':'Clientes','stat.sites':'Sedes en Francia','stat.response':'Respuesta al presupuesto',
+      'trust.label':'Confían en nosotros',
+      'about.eyebrow':'Quiénes somos','about.title':'Un equipo joven y dinámico, arraigado en el transporte',
+      'about.text':'SGA lleva varios años dedicada a la organización del transporte, la logística y la contratación de transporte. Somos un equipo joven y dinámico que escucha las necesidades de sus clientes. Capaces de organizar todo tipo de transporte multimodal, nuestra capacidad de respuesta nos ha permitido expandirnos a nivel internacional.',
+      'about.notion.transport':'Transporte','about.notion.logistique':'Logística','about.notion.affretement':'Contratación de transporte','about.notion.multimodal':'Multimodal','about.notion.international':'Internacional',
+      'about.note':'Una amplia red de transportistas seleccionados para responder a cada necesidad, en Francia y a nivel internacional.',
+      'about.photoTag':'Nuestras oficinas',
+      'activities.eyebrow':'Nuestras actividades','activities.title':'Un transitario, cuatro oficios',
+      'activities.sub':"Desde la organización del transporte hasta la puesta a disposición de espacios de almacenaje, SGA se ocupa de toda su cadena logística.",
+      'activities.stop1.title':'Contratación de transporte','activities.stop1.text':'La solución de transporte más adecuada para su mercancía, en cargas completas o parciales.',
+      'activities.stop2.title':'Almacenaje','activities.stop2.text':'Soluciones de almacenamiento flexibles para absorber sus picos de actividad.',
+      'activities.stop3.title':'Logística','activities.stop3.text':'La gestión de sus flujos para una cadena de transporte fluida, de principio a fin.',
+      'activities.stop4.title':'Entrega urgente','activities.stop4.text':'De lo local a lo internacional, máxima capacidad de respuesta ante sus plazos ajustados.',
+      'cap.eyebrow':'Nuestras capacidades','cap.title':'Soluciones de transporte completas y flexibles',
+      'cap.tagline':'Soluciones concretas y una red sólida para responder a todas sus necesidades de transporte.',
+      'cap.card1.title':'Transporte por carretera','cap.card1.text':'Cargas completas o parciales: la solución por carretera más adecuada para su mercancía.','cap.card1.tag2':'Plataforma','cap.card1.tag3':'Furgón',
+      'cap.card2.title':'Multimodal','cap.card2.text':'Del ferrocarril al avión, organizamos su transporte con todos los modos según sus condicionantes.','cap.card2.rail':'Ferrocarril','cap.card2.sea':'Marítimo','cap.card2.air':'Aéreo',
+      'cap.card3.text':'Una cobertura que va de lo local a lo internacional, respaldada por nuestras dos sedes en Francia.',
+      'cap.card4.title':'Soluciones a medida','cap.card4.text':'Temperatura controlada, cargas excepcionales, plataforma elevadora: adaptamos el vehículo a las exigencias de su mercancía.','cap.card4.tag1':'Temperatura controlada','cap.card4.tag2':'Portacoches','cap.card4.tag3':'Carga excepcional',
+      'pillar.transport.title':'Transporte','pillar.transport.text':'Transporte por carretera nacional e internacional, en cargas completas o parciales.',
+      'pillar.affretement.title':'Contratación de transporte','pillar.affretement.text':'Un socio de confianza para cada trabajo y cada tipo de mercancía.',
+      'pillar.europe.title':'Francia y Europa','pillar.europe.text':'Una densa red de más de 4.000 transportistas, para cubrir toda Francia y Europa.',
+      'pillar.multimodal.title':'Multimodal','pillar.multimodal.text':'Carretera, ferrocarril, mar, aire.',
+      'why.eyebrow':'Por qué elegirnos','why.title':'Un socio, no solo un proveedor de servicios',
+      'why.item1':'Costes de transporte reducidos','why.item2':'Entregas puntuales','why.item3':'Respuesta rápida','why.item4':'Un interlocutor dedicado',
+      'impl.eyebrow':'Sedes y red','impl.title':'Dos sedes, una red que cubre Francia y Europa',
+      'impl.legend.siege':'Sede central','impl.legend.bureau':'Oficina','impl.legend.reseau':'Red francesa','impl.legend.eu':'Red europea',
+      'team.eyebrow':'Nuestro equipo','team.title':'Interlocutores dedicados, no un centro de llamadas',
+      'role.director':'Director','role.president':'Presidenta / Directora financiera','role.intlForwarder':'Transitario internacional','role.salesTransport':'Comercial de transporte','role.accounting':'Departamento de contabilidad',
+      'cta.title':'¿Listo para optimizar su transporte?','cta.text':'Un presupuesto claro, un equipo ágil y un interlocutor dedicado en cada etapa.',
+      'footer.tagline':'Transporte de mercancías, almacenaje y logística: de lo local a lo internacional, en todos los modos de transporte.',
+      'footer.navTitle':'Navegación','footer.contactTitle':'Contacto',
+      'footer.rights':'SGA Groupe — Transporte, almacenaje, logística. Todos los derechos reservados.','footer.madeWith':'Sitio web creado con Claude',
+      'devis.eyebrow':'Presupuesto en menos de 2 minutos','devis.title':'Solicitud de presupuesto',
+      'devis.sub':"Unos pocos datos y nuestro equipo le responderá con una solución de transporte adecuada.",
+      'ps.contact':'Contacto','ps.route':'Trayecto','ps.goods':'Mercancía','ps.vehicle':'Vehículo','ps.recap':'Resumen',
+      's1.title':'Sus datos de contacto','s1.sub':'Para que nuestro equipo pueda responderle.',
+      's1.nameLabel':'Nombre o empresa <span class="req">*</span>','s1.namePh':'Juan Pérez o nombre de la empresa',
+      's1.phoneLabel':'Teléfono <span class="req">*</span>','s1.phonePh':'+34 600 00 00 00',
+      's1.emailLabel':'Correo electrónico <span class="req">*</span>','s1.emailPh':'usted@ejemplo.com',
+      'err.required':'Este campo es obligatorio.','err.weight':'Introduzca un peso válido.','btn.continue':'Continuar','btn.back':'Atrás','city.noMatch':'No se ha encontrado ninguna ciudad',
+      's2.title':'Su trayecto','s2.sub':'¿Dónde empieza el envío y adónde debe llegar?',
+      's2.fromLabel':'Ciudad de origen <span class="req">*</span>','s2.fromPh':'Ciudad o código postal',
+      's2.toLabel':'Ciudad de destino <span class="req">*</span>','s2.toPh':'Ciudad o código postal',
+      's3.title':'Su mercancía','s3.sub':'Uno o varios tipos de palés / mercancías que transportar.',
+      's3.addMerch':'Añadir otro tipo de mercancía',
+      'merch.typeLabel':'Tipo de palé','merch.opt.europe':'Palé europeo / EUR – 120 × 80 cm','merch.opt.industrielle':'Palé industrial – 120 × 100 cm','merch.opt.camion':'Camión completo','merch.opt.autre':'Otro / Carga especial',
+      'merch.qtyLabel':'Número de palés','merch.weightLabel':'Peso (kg) <span class="req">*</span>','merch.weightPh':'Ej. 350',
+      'merch.weightMode.unit':'kg / palé','merch.weightMode.total':'kg en total',
+      'merch.gerbableLabel':'Apilable','merch.gerbable.yes':'Apilable','merch.gerbable.no':'No apilable',
+      'merch.dim.l':'Largo (cm)','merch.dim.w':'Ancho (cm)','merch.dim.h':'Alto (cm)','merch.removeAria':'Eliminar',
+      's4.title':'Vehículo y equipamiento','s4.sub':'El tipo de vehículo y el equipamiento que necesita.',
+      's4.vehicleLabel':'Tipo de vehículo','s4.vehicle.tautliner':'Tautliner (lona corredera)','s4.vehicle.plateau':'Plataforma','s4.vehicle.fourgon':'Furgón / camión furgón','s4.vehicle.autre':'Otro',
+      's4.equipLabel':'Equipamiento necesario','s4.equip.hayon':'Plataforma elevadora','s4.equip.nohayon':'No se necesita plataforma elevadora','s4.equip.autre':'Otra necesidad',
+      's4.hayonLocLabel':'¿Dónde se necesita la plataforma elevadora? <span class="req">*</span>','s4.hayonLoc.depart':'En la recogida','s4.hayonLoc.arrivee':'En la entrega','s4.hayonLoc.both':'En la recogida y en la entrega',
+      's4.needLabel':'Necesidades específicas / información adicional','s4.needPh':'Cualquier detalle útil para su transporte (opcional)',
+      'btn.viewRecap':'Ver resumen',
+      's5.title':'Resumen','s5.sub':'Revise su solicitud antes de enviarla.',
+      'recap.contact':'Datos de contacto','recap.route':'Trayecto','recap.goods':'Mercancía','recap.vehicle':'Vehículo','recap.edit':'Modificar',
+      'btn.send':'Enviar mi solicitud','btn.sending':'Enviando…',
+      'success.title':'¡Solicitud enviada correctamente!',
+      'success.text':'Nuestro equipo le responderá en un plazo de 30 minutos.',
+      'success.backHome':'Volver al inicio',
+      'error.title':'Algo ha salido mal',
+      'error.text':'Se ha producido un error al enviar su solicitud. Inténtelo de nuevo o contáctenos directamente.',
+      'error.retry':'Reintentar','error.callUs':'+33 7 64 19 10 17',
+      'mail.subjectPrefix':'Solicitud de presupuesto - ','mail.fallbackName':'Sitio web','mail.intro':'Nueva solicitud de presupuesto a través del sitio web de SGA',
+      'mail.contactHeader':'CONTACTO','mail.name':'Nombre / empresa: ','mail.phone':'Teléfono: ','mail.email':'Correo electrónico: ',
+      'mail.routeHeader':'TRAYECTO','mail.from':'Origen: ','mail.to':'Destino: ',
+      'mail.goodsHeader':'MERCANCÍA','mail.vehicleHeader':'VEHÍCULO','mail.type':'Tipo: ','mail.equip':'Equipamiento: ',
+      'mail.specificHeader':'NECESIDADES ESPECÍFICAS','mail.perPallet':'por palé','mail.total':'en total','mail.dims':'dimensiones','mail.notSpecified':'No especificado',
+      'vehicle.tautliner':'Tautliner (lona corredera)','vehicle.plateau':'Plataforma','vehicle.fourgon':'Furgón / camión furgón','vehicle.autre':'Otro',
+      'hayon.hayon':'Plataforma elevadora necesaria','hayon.pas_hayon':'No se necesita plataforma elevadora','hayon.autre_besoin':'Otra necesidad',
+      'hayonLoc.depart':'en la recogida','hayonLoc.arrivee':'en la entrega','hayonLoc.depart_arrivee':'en la recogida y en la entrega',
+      'palette.europe':'Palé europeo / EUR (120 × 80 cm)','palette.industrielle':'Palé industrial (120 × 100 cm)','palette.camion':'Camión completo','palette.autre':'Otro / Carga especial',
+      'meta.title':'SGA Groupe — Transitario nacional e internacional'
     }
   };
   var currentLang = 'fr';
@@ -369,7 +458,7 @@
   }
   var langChangeCallbacks = [];
   function applyLanguage(lang){
-    currentLang = (lang === 'en') ? 'en' : 'fr';
+    currentLang = (lang === 'en' || lang === 'es') ? lang : 'fr';
     try{ localStorage.setItem('sga-lang', currentLang); }catch(e){}
     root.setAttribute('lang', currentLang);
     document.title = t('meta.title');
@@ -384,7 +473,7 @@
   document.querySelectorAll('.lang-btn').forEach(function(btn){
     btn.addEventListener('click', function(){ applyLanguage(btn.getAttribute('data-lang')); });
   });
-  applyLanguage(savedLang === 'en' ? 'en' : 'fr');
+  applyLanguage((savedLang === 'en' || savedLang === 'es') ? savedLang : 'fr');
 
   /* ---------- Header scroll ----------
      Throttled to one check per animation frame (not per scroll event, which can
