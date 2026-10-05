@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.sga-groupe.fr/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sga-groupe.fr/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sga-groupe.fr/"/>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://sga-groupe.fr/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://sga-groupe.fr/affretement-routier</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://sga-groupe.fr/transport-national-international</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://sga-groupe.fr/stockage-logistique</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://sga-groupe.fr/a-propos-sga-groupe</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://sga-groupe.fr/transport-logistique-villars-les-dombes</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://sga-groupe.fr/transport-logistique-vendargues</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://sga-groupe.fr/mentions-legales</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://sga-groupe.fr/faq</loc>
+    <lastmod>2026-10-05</lastmod>
   </url>
 </urlset>
