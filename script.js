@@ -234,7 +234,7 @@
       's2.toLabel':"Ville d'arrivée <span class=\"req\">*</span>",'s2.toPh':'Ville ou code postal',
       's3.title':'Votre marchandise','s3.sub':'Un ou plusieurs types de palettes / marchandises à transporter.',
       's3.addMerch':'Ajouter un autre type de marchandise',
-      'merch.typeLabel':'Type de palette','merch.opt.europe':'Palette Europe / EUR – 120 × 80 cm','merch.opt.industrielle':'Palette industrielle – 120 × 100 cm','merch.opt.autre':'Autre / Hors norme',
+      'merch.typeLabel':'Type de palette','merch.opt.europe':'Palette Europe / EUR – 120 × 80 cm','merch.opt.industrielle':'Palette industrielle – 120 × 100 cm','merch.opt.camion':'Camion complet','merch.opt.autre':'Autre / Hors norme',
       'merch.qtyLabel':'Nombre de palettes','merch.weightLabel':'Poids (kg) <span class="req">*</span>','merch.weightPh':'Ex : 350',
       'merch.weightMode.unit':'kg / palette','merch.weightMode.total':'kg au total',
       'merch.gerbableLabel':'Gerbable','merch.gerbable.yes':'Gerbable','merch.gerbable.no':'Non gerbable',
@@ -262,7 +262,7 @@
       'vehicle.tautliner':'Tautliner','vehicle.plateau':'Plateau','vehicle.fourgon':'Fourgon / camion','vehicle.autre':'Autre',
       'hayon.hayon':'Hayon nécessaire','hayon.pas_hayon':'Pas de hayon nécessaire','hayon.autre_besoin':'Autre besoin',
       'hayonLoc.depart':'au départ','hayonLoc.arrivee':'à l\'arrivée','hayonLoc.depart_arrivee':'au départ et à l\'arrivée',
-      'palette.europe':'Palette Europe / EUR (120 × 80 cm)','palette.industrielle':'Palette industrielle (120 × 100 cm)','palette.autre':'Autre / Hors norme',
+      'palette.europe':'Palette Europe / EUR (120 × 80 cm)','palette.industrielle':'Palette industrielle (120 × 100 cm)','palette.camion':'Camion complet','palette.autre':'Autre / Hors norme',
       'meta.title':'SGA Groupe — Affréteur routier national & international'
     },
     en: {
@@ -323,7 +323,7 @@
       's2.toLabel':'Arrival city <span class="req">*</span>','s2.toPh':'City or postal code',
       's3.title':'Your goods','s3.sub':'One or more types of pallets / goods to transport.',
       's3.addMerch':'Add another type of goods',
-      'merch.typeLabel':'Pallet type','merch.opt.europe':'Euro pallet / EUR – 120 × 80 cm','merch.opt.industrielle':'Industrial pallet – 120 × 100 cm','merch.opt.autre':'Other / Oversized',
+      'merch.typeLabel':'Pallet type','merch.opt.europe':'Euro pallet / EUR – 120 × 80 cm','merch.opt.industrielle':'Industrial pallet – 120 × 100 cm','merch.opt.camion':'Full truckload','merch.opt.autre':'Other / Oversized',
       'merch.qtyLabel':'Number of pallets','merch.weightLabel':'Weight (kg) <span class="req">*</span>','merch.weightPh':'E.g. 350',
       'merch.weightMode.unit':'kg / pallet','merch.weightMode.total':'kg total',
       'merch.gerbableLabel':'Stackable','merch.gerbable.yes':'Stackable','merch.gerbable.no':'Not stackable',
@@ -351,7 +351,7 @@
       'vehicle.tautliner':'Tautliner','vehicle.plateau':'Flatbed','vehicle.fourgon':'Box van / truck','vehicle.autre':'Other',
       'hayon.hayon':'Tail lift required','hayon.pas_hayon':'No tail lift needed','hayon.autre_besoin':'Other requirement',
       'hayonLoc.depart':'at pickup','hayonLoc.arrivee':'at delivery','hayonLoc.depart_arrivee':'at pickup and delivery',
-      'palette.europe':'Euro pallet / EUR (120 × 80 cm)','palette.industrielle':'Industrial pallet (120 × 100 cm)','palette.autre':'Other / Oversized',
+      'palette.europe':'Euro pallet / EUR (120 × 80 cm)','palette.industrielle':'Industrial pallet (120 × 100 cm)','palette.camion':'Full truckload','palette.autre':'Other / Oversized',
       'meta.title':'SGA Groupe — National & International Freight Forwarder'
     }
   };
@@ -696,10 +696,11 @@
           '<select class="merch-type" data-id="'+id+'">'+
             '<option value="europe" data-i18n="merch.opt.europe">Palette Europe / EUR – 120 × 80 cm</option>'+
             '<option value="industrielle" data-i18n="merch.opt.industrielle">Palette industrielle – 120 × 100 cm</option>'+
+            '<option value="camion" data-i18n="merch.opt.camion">Camion complet</option>'+
             '<option value="autre" data-i18n="merch.opt.autre">Autre / Hors norme</option>'+
           '</select>'+
         '</div>'+
-        '<div class="field">'+
+        '<div class="field merch-qty-field">'+
           '<label data-i18n="merch.qtyLabel">Nombre de palettes</label>'+
           '<div class="stepper">'+
             '<button type="button" class="merch-qty-minus" data-id="'+id+'">−</button>'+
@@ -772,8 +773,25 @@
       var id = e.target.getAttribute('data-id');
       var dims = merchList.querySelector('.merch-dims[data-id="'+id+'"]');
       if(dims){ dims.classList.toggle('show', e.target.value === 'autre'); }
+      applyTruckMode(e.target.closest('.merch-row'));
     }
   });
+
+  /* "Camion complet": no pallet count or dimensions to fill in, the weight (mandatory)
+     is given for the whole load. */
+  function applyTruckMode(row){
+    if(!row) return;
+    var isTruck = row.querySelector('.merch-type').value === 'camion';
+    row.classList.toggle('is-truck', isTruck);
+    var mode = row.querySelector('.merch-weight-mode');
+    if(isTruck){
+      mode.value = 'total';
+      mode.disabled = true;
+      row.querySelector('.merch-qty').value = 1;
+    } else {
+      mode.disabled = false;
+    }
+  }
 
   document.getElementById('addMerchBtn').addEventListener('click', addMerchRow);
   addMerchRow(); // first row by default
@@ -792,7 +810,7 @@
       var item = {
         type: type,
         typeLabel: t('palette.'+type) || type,
-        qty: qty,
+        qty: type === 'camion' ? '1' : qty,
         weight: weight,
         weightMode: weightMode === 'total' ? t('mail.total') : t('mail.perPallet'),
         gerbable: gerbableCode,
@@ -825,7 +843,7 @@
     var merch = collectMerch();
 
     var merchHtml = merch.map(function(m){
-      var line = '<div>' + m.qty + '× <b>' + m.typeLabel + '</b>';
+      var line = '<div>' + (m.type === 'camion' ? '' : m.qty + '× ') + '<b>' + m.typeLabel + '</b>';
       if(m.weight){ line += ' — ' + m.weight + ' kg (' + m.weightMode + ')'; }
       if(m.gerbableLabel){ line += ' — ' + m.gerbableLabel; }
       if(m.type === 'autre' && (m.l || m.w || m.h)){ line += ' — ' + (m.l||'?') + '×' + (m.w||'?') + '×' + (m.h||'?') + ' cm'; }
@@ -916,7 +934,7 @@
       t('mail.goodsHeader')
     ];
     merch.forEach(function(m, i){
-      var l = (i+1) + '. ' + m.qty + ' x ' + m.typeLabel;
+      var l = (i+1) + '. ' + (m.type === 'camion' ? '' : m.qty + ' x ') + m.typeLabel;
       if(m.weight){ l += ' — ' + m.weight + ' kg (' + m.weightMode + ')'; }
       if(m.gerbableLabel){ l += ' — ' + m.gerbableLabel; }
       if(m.type === 'autre' && (m.l || m.w || m.h)){ l += ' — ' + t('mail.dims') + ' ' + (m.l||'?') + 'x' + (m.w||'?') + 'x' + (m.h||'?') + ' cm'; }
