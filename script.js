@@ -12,7 +12,7 @@
       if(requested) return;
       requested = true;
       var s = document.createElement('script');
-      s.src = 'cities.js?v=456e4cda';
+      s.src = 'cities.js?v=a0228a4a';
       s.async = true;
       s.onload = function(){
         SGA_CITIES.push.apply(SGA_CITIES, window.__SGA_CITIES || []);

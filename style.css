@@ -150,8 +150,10 @@
   .hero-stats .stat span{font-size:12.5px;color:rgba(255,255,255,.78);}
   @media (max-width:720px){
     .hero-stats{position:static;padding:18px 20px 0;}
-    .hero-stats-inner{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 14px;background:var(--bg-soft);border:1px solid var(--surface-border);backdrop-filter:none;padding:18px 16px;border-radius:var(--radius-sm);box-shadow:var(--shadow);}
-    .hero-stats .stat{text-align:center;padding:8px 0;}
+    .hero-stats-inner{display:grid;grid-template-columns:repeat(2,1fr);gap:0;background:var(--bg-soft);border:1px solid var(--surface-border);backdrop-filter:none;padding:18px 16px;border-radius:var(--radius-sm);box-shadow:var(--shadow);}
+    .hero-stats .stat{text-align:center;padding:16px 8px;}
+    .hero-stats .stat:nth-child(odd){border-right:1px solid var(--surface-border);}
+    .hero-stats .stat:nth-child(-n+2){border-bottom:1px solid var(--surface-border);}
     .hero-stats .stat b{color:var(--text);font-size:21px;}
     .hero-stats .stat span{color:var(--text-faint);}
   }
@@ -321,10 +323,12 @@
     .pillars{grid-template-columns:1fr 1fr;row-gap:40px;}
     .pillar{border-left:none;padding:0 16px;}
     .pillar:nth-child(odd){border-right:1px solid var(--surface-border);}
+    .pillar:nth-child(n+3){border-top:1px solid var(--surface-border);padding-top:36px;}
   }
   @media (max-width:560px){
-    .pillars{grid-template-columns:1fr;row-gap:32px;}
+    .pillars{grid-template-columns:1fr;row-gap:28px;}
     .pillar{border:none!important;padding:0;}
+    .pillar + .pillar{border-top:1px solid var(--surface-border)!important;padding-top:28px;}
   }
 
   /* ---------- Pourquoi (strip) ---------- */
