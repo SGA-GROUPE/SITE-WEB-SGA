@@ -12,7 +12,7 @@
       if(requested) return;
       requested = true;
       var s = document.createElement('script');
-      s.src = 'cities.js?v=a0228a4a';
+      s.src = 'cities.js?v=76afd84c';
       s.async = true;
       s.onload = function(){
         SGA_CITIES.push.apply(SGA_CITIES, window.__SGA_CITIES || []);
@@ -1073,6 +1073,7 @@
       if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = submitBtnOriginal; }
       if(success){
         try{ sessionStorage.setItem('sgaDevisLastSent', String(Date.now())); }catch(err){}
+        try{ if(window.sgaTrack){ window.sgaTrack('quote'); } }catch(err){}
       }
       showDevisResult(success);
     }

@@ -96,6 +96,25 @@
   @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .sun{display:block;}}
   .burger{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--surface-border);background:var(--bg-soft);align-items:center;justify-content:center;cursor:pointer;}
   .burger svg{width:20px;height:20px;}
+  /* Desktop header: the nav sits in the free space between logo and actions (never overlaps, whatever the language). */
+  @media (min-width:981px){ .nav-inner{grid-template-columns:auto 1fr auto;} }
+  @media (min-width:981px) and (max-width:1399px){
+    .nav-inner{gap:12px;}
+    #site-header .wrap{padding:0 24px;}
+    .brand img{height:58px;}
+    #site-header.scrolled .brand img{height:44px;}
+    nav.main-nav a{padding:12px 9px;font-size:14px;white-space:nowrap;}
+    .header-actions{gap:8px;}
+    .header-actions .btn-sm{white-space:nowrap;}
+    .header-actions .linkedin-link{display:none;}
+    .header-actions .btn-sm{padding-left:16px;padding-right:16px;}
+  }
+  @media (min-width:981px) and (max-width:1070px){
+    #site-header .wrap{padding:0 16px;}
+    .brand img{height:50px;}
+    nav.main-nav a{padding:12px 6px;font-size:13.5px;}
+    .header-actions .btn-sm{padding-left:12px;padding-right:12px;font-size:13px;}
+  }
 
   .icon-btn{width:44px;height:44px;border-radius:99px;border:1px solid var(--surface-border);background:var(--bg-soft);color:var(--text-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;transition:color .18s ease, border-color .18s ease, transform .18s ease;}
   .icon-btn:hover{color:var(--cyan-600);border-color:color-mix(in srgb, var(--cyan) 40%, var(--surface-border));transform:translateY(-1px);}
