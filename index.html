@@ -114,7 +114,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=76afd84c">
+<link rel="stylesheet" href="style.css?v=fc4e887a">
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});try{var c=JSON.parse(localStorage.getItem('sga-consent')||'null');if(c&&c.v==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}gtag('js',new Date());gtag('config','G-9LJT3M2RM1');</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LJT3M2RM1"></script>
 </head>
@@ -717,8 +717,8 @@
           <!-- STEP 2 : TRAJET -->
           <div class="wizard-step" data-step="2">
             <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 8 4h8l4 16"/><path d="M12 4v3M12 10.5v3M12 17v3"/></svg></div>
-            <h2 data-i18n="s2.title">Votre trajet</h2>
-            <div class="step-sub" data-i18n="s2.sub">D'où part la marchandise, et où doit-elle arriver ?</div>
+            <h2 data-i18n="s2.title">Votre trajet &amp; vos délais</h2>
+            <div class="step-sub" data-i18n="s2.sub">D'où part la marchandise, où doit-elle arriver, et quand ?</div>
             <div class="field-row">
               <div class="field city-field">
                 <label for="f-depart" data-i18n-html="s2.fromLabel">Ville de départ <span class="req">*</span></label>
@@ -731,6 +731,66 @@
                 <input id="f-arrivee" type="text" placeholder="Ex : Vendargues" data-i18n-ph="s2.toPh" autocomplete="off" required>
                 <div class="city-suggest" id="f-arrivee-suggest"></div>
                 <span class="error-msg" data-i18n="err.required">Ce champ est requis.</span>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-date-depart" data-i18n-html="s2.dateFromLabel">Date de chargement (départ) <span class="req">*</span></label>
+                <input id="f-date-depart" type="date" required>
+                <span class="error-msg" data-i18n="err.required">Ce champ est requis.</span>
+                <span class="error-msg err-extra" id="dateFromPast" data-i18n="err.datePast">La date ne peut pas être dans le passé.</span>
+              </div>
+              <div class="field">
+                <label for="f-date-arrivee" data-i18n-html="s2.dateToLabel">Date de livraison (arrivée) <span class="req">*</span></label>
+                <input id="f-date-arrivee" type="date" required>
+                <span class="error-msg" data-i18n="err.required">Ce champ est requis.</span>
+                <span class="error-msg err-extra" id="dateToOrder" data-i18n="err.dateOrder">La livraison ne peut pas précéder le chargement.</span>
+              </div>
+            </div>
+            <div class="field">
+              <span class="opt-title" data-i18n="s2.optLabel">Délai &amp; options</span>
+              <div class="opt-list">
+                <label class="opt-card" for="f-urgent">
+                  <input type="checkbox" id="f-urgent">
+                  <span class="opt-box" aria-hidden="true"></span>
+                  <span class="opt-txt"><b data-i18n="s2.urgent">Transport urgent</b><small data-i18n="s2.urgentHint">Prise en charge prioritaire : nous traitons votre demande en premier.</small></span>
+                </label>
+                <label class="opt-card" for="f-express">
+                  <input type="checkbox" id="f-express">
+                  <span class="opt-box" aria-hidden="true"></span>
+                  <span class="opt-txt"><b data-i18n="s2.express">Livraison express, le jour même</b><small data-i18n="s2.expressHint">Chargement et livraison le même jour. La date de livraison suit la date de chargement.</small></span>
+                </label>
+                <label class="opt-card" for="f-rdv">
+                  <input type="checkbox" id="f-rdv">
+                  <span class="opt-box" aria-hidden="true"></span>
+                  <span class="opt-txt"><b data-i18n="s2.rdv">Rendez-vous imposé</b><small data-i18n="s2.rdvHint">Un horaire précis est exigé au chargement, à la livraison, ou aux deux.</small></span>
+                </label>
+              </div>
+            </div>
+            <div class="rdv-box" id="rdvBox" hidden>
+              <div class="rdv-head">
+                <button type="button" class="rdv-remove" id="rdvRemove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span data-i18n="s2.rdvRemove">Retirer le rendez-vous</span></button>
+              </div>
+              <div class="field">
+                <label data-i18n-html="s2.rdvWhere">Où le rendez-vous est-il imposé ? <span class="req">*</span></label>
+                <div class="choice-group" id="rdvGroup" data-name="rdvWhere">
+                  <button type="button" class="choice-btn" data-value="charg" data-i18n="s2.rdv.charg">Au chargement</button>
+                  <button type="button" class="choice-btn" data-value="livr" data-i18n="s2.rdv.livr">À la livraison</button>
+                  <button type="button" class="choice-btn" data-value="both" data-i18n="s2.rdv.both">Aux deux</button>
+                </div>
+                <span class="error-msg" id="rdvWhereError" data-i18n="err.required">Ce champ est requis.</span>
+              </div>
+              <div class="rdv-times">
+                <div class="field" id="rdvTimeFromWrap" hidden>
+                  <label for="f-rdv-charg" data-i18n-html="s2.rdvTimeFrom">Heure au chargement <span class="req">*</span></label>
+                  <input id="f-rdv-charg" type="time">
+                  <span class="error-msg" data-i18n="err.required">Ce champ est requis.</span>
+                </div>
+                <div class="field" id="rdvTimeToWrap" hidden>
+                  <label for="f-rdv-livr" data-i18n-html="s2.rdvTimeTo">Heure à la livraison <span class="req">*</span></label>
+                  <input id="f-rdv-livr" type="time">
+                  <span class="error-msg" data-i18n="err.required">Ce champ est requis.</span>
+                </div>
               </div>
             </div>
             <div class="wizard-nav">
@@ -840,7 +900,7 @@
 </div>
 <!-- ============================ /DEVIS VIEW ========================= -->
 
-<script src="tracking.js?v=76afd84c" defer></script>
-<script src="script.js?v=76afd84c"></script>
+<script src="tracking.js?v=fc4e887a" defer></script>
+<script src="script.js?v=fc4e887a"></script>
 </body>
 </html>

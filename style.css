@@ -581,7 +581,7 @@
   .field{display:flex;flex-direction:column;gap:7px;margin-bottom:18px;}
   .field label{font-size:13px;font-weight:600;color:var(--text-soft);}
   .field .req{color:var(--cyan-600);}
-  .field input[type=text],.field input[type=tel],.field input[type=email],.field input[type=number],.field select,.field textarea{
+  .field input[type=text],.field input[type=tel],.field input[type=email],.field input[type=number],.field input[type=date],.field input[type=time],.field select,.field textarea{
     font-family:var(--font-body);font-size:15px;color:var(--text);background:var(--bg-soft);
     border:1px solid var(--surface-border);border-radius:11px;padding:13px 15px;outline:none;
     transition:border-color .18s ease, box-shadow .18s ease;width:100%;appearance:none;
@@ -632,6 +632,36 @@
   .recap-block h4 a{font-size:12px;font-weight:700;color:var(--cyan-600);text-transform:none;letter-spacing:0;}
   .recap-block .recap-content{font-size:14.5px;color:var(--text);background:var(--bg-soft);border:1px solid var(--surface-border);border-radius:12px;padding:14px 16px;}
   .recap-content div{padding:3px 0;}
+  /* ---------- Dates, urgency, express & appointment options (quote form step 2) ---------- */
+  .field input[type=date],.field input[type=time]{min-height:48px;color-scheme:light;}
+  :root[data-theme="dark"] .field input[type=date],:root[data-theme="dark"] .field input[type=time]{color-scheme:dark;}
+  .field input[readonly]{opacity:.75;cursor:not-allowed;}
+  .opt-title{font-size:13px;font-weight:600;color:var(--text-soft);}
+  .opt-list{display:grid;gap:10px;}
+  .opt-card{position:relative;display:flex;align-items:flex-start;gap:13px;padding:14px 16px;border:1.5px solid var(--surface-border);border-radius:14px;background:var(--bg-card);cursor:pointer;transition:border-color .18s ease, background .18s ease, box-shadow .18s ease;}
+  .opt-card:hover{border-color:color-mix(in srgb, var(--cyan) 45%, var(--surface-border));}
+  .opt-card input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
+  .opt-box{flex:none;width:22px;height:22px;border-radius:7px;border:2px solid var(--text-faint);display:flex;align-items:center;justify-content:center;margin-top:1px;transition:background .18s ease, border-color .18s ease;}
+  .opt-box::after{content:"";width:11px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0;transition:opacity .15s ease;}
+  .opt-card.checked{border-color:var(--cyan);background:color-mix(in srgb, var(--cyan) 7%, var(--bg-card));box-shadow:0 0 0 3px color-mix(in srgb, var(--cyan) 12%, transparent);}
+  .opt-card.checked .opt-box{background:var(--navy);border-color:var(--navy);}
+  .opt-card.checked .opt-box::after{opacity:1;}
+  .opt-card input:focus-visible + .opt-box{outline:3px solid color-mix(in srgb, var(--cyan) 55%, transparent);outline-offset:2px;}
+  .opt-txt{display:flex;flex-direction:column;gap:2px;}
+  .opt-txt b{font-size:14.5px;font-weight:600;color:var(--text);}
+  .field .opt-card{font-size:14px;font-weight:400;color:var(--text);}
+  .opt-txt small{font-size:12.5px;line-height:1.45;color:var(--text-soft);font-weight:400;}
+  .rdv-box{margin-top:2px;padding:16px;border:1px dashed color-mix(in srgb, var(--cyan) 45%, var(--surface-border));border-radius:14px;background:var(--bg-soft);}
+  .rdv-box .field:last-child{margin-bottom:0;}
+  .rdv-head{display:flex;justify-content:flex-end;margin:-6px -4px 8px 0;}
+  .rdv-remove{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;font-weight:600;color:var(--text-soft);background:transparent;border:1px solid var(--surface-border);border-radius:999px;padding:6px 12px;cursor:pointer;transition:border-color .15s ease,color .15s ease,background .15s ease;}
+  .rdv-remove svg{width:13px;height:13px;}
+  .rdv-remove:hover{border-color:var(--cyan);color:var(--cyan-600);background:color-mix(in srgb, var(--cyan) 8%, transparent);}
+  .rdv-times{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px;}
+  .rdv-times .field{margin-bottom:0;}
+  .error-msg.err-extra{margin-top:0;}
+  .recap-tag{display:inline-block;padding:3px 11px;border-radius:99px;background:color-mix(in srgb, var(--cyan) 15%, transparent);color:var(--cyan-600);font-size:12.5px;font-weight:700;margin:6px 6px 0 0;}
+  @media (max-width:560px){ .rdv-times{grid-template-columns:1fr;} }
   .recap-content b{font-weight:600;}
 
   .devis-success{text-align:center;padding:20px 0;}

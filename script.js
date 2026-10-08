@@ -12,7 +12,7 @@
       if(requested) return;
       requested = true;
       var s = document.createElement('script');
-      s.src = 'cities.js?v=76afd84c';
+      s.src = 'cities.js?v=fc4e887a';
       s.async = true;
       s.onload = function(){
         SGA_CITIES.push.apply(SGA_CITIES, window.__SGA_CITIES || []);
@@ -223,13 +223,49 @@
       'footer.rights':'SGA Groupe — Fret, Stockage, Logistique. Tous droits réservés.','footer.madeWith':'Site réalisé avec Claude',
       'devis.eyebrow':'Devis en moins de 2 minutes','devis.title':'Demande de devis',
       'devis.sub':"Quelques informations et notre équipe revient vers vous avec une solution de transport adaptée.",
-      'ps.contact':'Coordonnées','ps.route':'Trajet','ps.goods':'Marchandise','ps.vehicle':'Véhicule','ps.recap':'Récap',
+      'ps.contact':'Coordonnées','ps.route':'Trajet & dates','ps.goods':'Marchandise','ps.vehicle':'Véhicule','ps.recap':'Récap',
       's1.title':'Vos coordonnées','s1.sub':'Pour que notre équipe puisse revenir vers vous.',
       's1.nameLabel':'Nom / prénom ou société <span class="req">*</span>','s1.namePh':'Jean Dupont ou nom de société',
       's1.phoneLabel':'Téléphone <span class="req">*</span>','s1.phonePh':'06 00 00 00 00',
       's1.emailLabel':'E-mail <span class="req">*</span>','s1.emailPh':'vous@exemple.fr',
       'err.required':'Ce champ est requis.','err.weight':'Veuillez indiquer un poids valide.','btn.continue':'Continuer','btn.back':'Retour','city.noMatch':'Aucune ville trouvée',
-      's2.title':'Votre trajet','s2.sub':"D'où part la marchandise, et où doit-elle arriver ?",
+      's2.title':'Votre trajet & vos délais','s2.sub':'D\'où part la marchandise, où doit-elle arriver, et quand ?',
+      's2.dateFromLabel':'Date de chargement (départ) <span class="req">*</span>',
+      's2.dateToLabel':'Date de livraison (arrivée) <span class="req">*</span>',
+      's2.optLabel':'Délai & options',
+      's2.urgent':'Transport urgent',
+      's2.urgentHint':'Prise en charge prioritaire : nous traitons votre demande en premier.',
+      's2.express':'Livraison express, le jour même',
+      's2.expressHint':'Chargement et livraison le même jour. La date de livraison suit la date de chargement.',
+      's2.rdv':'Rendez-vous imposé',
+      's2.rdvHint':'Un horaire précis est exigé au chargement, à la livraison, ou aux deux.',
+      's2.rdvRemove':'Retirer le rendez-vous',
+      's2.rdvWhere':'Où le rendez-vous est-il imposé ? <span class="req">*</span>',
+      's2.rdv.charg':'Au chargement',
+      's2.rdv.livr':'À la livraison',
+      's2.rdv.both':'Aux deux',
+      's2.rdvTimeFrom':'Heure au chargement <span class="req">*</span>',
+      's2.rdvTimeTo':'Heure à la livraison <span class="req">*</span>',
+      'err.datePast':'La date ne peut pas être dans le passé.',
+      'err.dateOrder':'La livraison ne peut pas précéder le chargement.',
+      'recap.dateFrom':'Chargement',
+      'recap.dateTo':'Livraison',
+      'recap.urgent':'Urgent',
+      'recap.express':'Livraison express (jour même)',
+      'recap.rdv':'Rendez-vous',
+      'rdv.charg':'chargement',
+      'rdv.livr':'livraison',
+      'rdv.at':'à',
+      'mail.dateFrom':'Date de chargement : ',
+      'mail.dateTo':'Date de livraison : ',
+      'mail.urgent':'URGENT : oui',
+      'mail.express':'Livraison express (jour même) : oui',
+      'mail.rdv':'Rendez-vous : ',
+      'mail.urgentTag':'URGENT',
+      'mail.expressTag':'EXPRESS',
+      'mail.yes':'Oui',
+      'mail.no':'Non',
+
       's2.fromLabel':'Ville de départ <span class="req">*</span>','s2.fromPh':'Ville ou code postal',
       's2.toLabel':"Ville d'arrivée <span class=\"req\">*</span>",'s2.toPh':'Ville ou code postal',
       's3.title':'Votre marchandise','s3.sub':'Un ou plusieurs types de palettes / marchandises à transporter.',
@@ -312,13 +348,49 @@
       'footer.rights':'SGA Groupe — Freight, Storage, Logistics. All rights reserved.','footer.madeWith':'Website built with Claude',
       'devis.eyebrow':'Quote in under 2 minutes','devis.title':'Quote request',
       'devis.sub':"A few details and our team will get back to you with a suitable transport solution.",
-      'ps.contact':'Contact','ps.route':'Route','ps.goods':'Goods','ps.vehicle':'Vehicle','ps.recap':'Summary',
+      'ps.contact':'Contact','ps.route':'Route & dates','ps.goods':'Goods','ps.vehicle':'Vehicle','ps.recap':'Summary',
       's1.title':'Your contact details','s1.sub':'So our team can get back to you.',
       's1.nameLabel':'Name or company <span class="req">*</span>','s1.namePh':'John Smith or company name',
       's1.phoneLabel':'Phone <span class="req">*</span>','s1.phonePh':'+33 6 00 00 00 00',
       's1.emailLabel':'Email <span class="req">*</span>','s1.emailPh':'you@example.com',
       'err.required':'This field is required.','err.weight':'Please enter a valid weight.','btn.continue':'Continue','btn.back':'Back','city.noMatch':'No matching city found',
-      's2.title':'Your route','s2.sub':'Where does the shipment start, and where does it need to arrive?',
+      's2.title':'Your route & timing','s2.sub':'Where does the shipment start, where must it arrive, and when?',
+      's2.dateFromLabel':'Pickup date <span class="req">*</span>',
+      's2.dateToLabel':'Delivery date <span class="req">*</span>',
+      's2.optLabel':'Timing & options',
+      's2.urgent':'Urgent transport',
+      's2.urgentHint':'Priority handling: we deal with your request first.',
+      's2.express':'Express delivery, same day',
+      's2.expressHint':'Pickup and delivery on the same day. The delivery date follows the pickup date.',
+      's2.rdv':'Fixed appointment',
+      's2.rdvHint':'A specific time is required at pickup, at delivery, or at both.',
+      's2.rdvRemove':'Remove appointment',
+      's2.rdvWhere':'Where is the appointment required? <span class="req">*</span>',
+      's2.rdv.charg':'At pickup',
+      's2.rdv.livr':'At delivery',
+      's2.rdv.both':'At both',
+      's2.rdvTimeFrom':'Pickup time <span class="req">*</span>',
+      's2.rdvTimeTo':'Delivery time <span class="req">*</span>',
+      'err.datePast':'The date cannot be in the past.',
+      'err.dateOrder':'Delivery cannot be before pickup.',
+      'recap.dateFrom':'Pickup',
+      'recap.dateTo':'Delivery',
+      'recap.urgent':'Urgent',
+      'recap.express':'Express delivery (same day)',
+      'recap.rdv':'Appointment',
+      'rdv.charg':'pickup',
+      'rdv.livr':'delivery',
+      'rdv.at':'at',
+      'mail.dateFrom':'Pickup date: ',
+      'mail.dateTo':'Delivery date: ',
+      'mail.urgent':'URGENT: yes',
+      'mail.express':'Express delivery (same day): yes',
+      'mail.rdv':'Appointment: ',
+      'mail.urgentTag':'URGENT',
+      'mail.expressTag':'EXPRESS',
+      'mail.yes':'Yes',
+      'mail.no':'No',
+
       's2.fromLabel':'Departure city <span class="req">*</span>','s2.fromPh':'City or postal code',
       's2.toLabel':'Arrival city <span class="req">*</span>','s2.toPh':'City or postal code',
       's3.title':'Your goods','s3.sub':'One or more types of pallets / goods to transport.',
@@ -401,13 +473,49 @@
       'footer.rights':'SGA Groupe — Transporte, almacenaje, logística. Todos los derechos reservados.','footer.madeWith':'Sitio web creado con Claude',
       'devis.eyebrow':'Presupuesto en menos de 2 minutos','devis.title':'Solicitud de presupuesto',
       'devis.sub':"Unos pocos datos y nuestro equipo le responderá con una solución de transporte adecuada.",
-      'ps.contact':'Contacto','ps.route':'Trayecto','ps.goods':'Mercancía','ps.vehicle':'Vehículo','ps.recap':'Resumen',
+      'ps.contact':'Contacto','ps.route':'Trayecto y fechas','ps.goods':'Mercancía','ps.vehicle':'Vehículo','ps.recap':'Resumen',
       's1.title':'Sus datos de contacto','s1.sub':'Para que nuestro equipo pueda responderle.',
       's1.nameLabel':'Nombre o empresa <span class="req">*</span>','s1.namePh':'Juan Pérez o nombre de la empresa',
       's1.phoneLabel':'Teléfono <span class="req">*</span>','s1.phonePh':'+34 600 00 00 00',
       's1.emailLabel':'Correo electrónico <span class="req">*</span>','s1.emailPh':'usted@ejemplo.com',
       'err.required':'Este campo es obligatorio.','err.weight':'Introduzca un peso válido.','btn.continue':'Continuar','btn.back':'Atrás','city.noMatch':'No se ha encontrado ninguna ciudad',
-      's2.title':'Su trayecto','s2.sub':'¿Dónde empieza el envío y adónde debe llegar?',
+      's2.title':'Su trayecto y plazos','s2.sub':'¿Dónde empieza el envío, adónde debe llegar y cuándo?',
+      's2.dateFromLabel':'Fecha de carga (recogida) <span class="req">*</span>',
+      's2.dateToLabel':'Fecha de entrega (llegada) <span class="req">*</span>',
+      's2.optLabel':'Plazo y opciones',
+      's2.urgent':'Transporte urgente',
+      's2.urgentHint':'Gestión prioritaria: atendemos su solicitud en primer lugar.',
+      's2.express':'Entrega exprés, el mismo día',
+      's2.expressHint':'Carga y entrega el mismo día. La fecha de entrega sigue a la de carga.',
+      's2.rdv':'Cita fijada',
+      's2.rdvHint':'Se exige una hora concreta en la carga, en la entrega o en ambas.',
+      's2.rdvRemove':'Quitar la cita',
+      's2.rdvWhere':'¿Dónde se exige la cita? <span class="req">*</span>',
+      's2.rdv.charg':'En la carga',
+      's2.rdv.livr':'En la entrega',
+      's2.rdv.both':'En ambas',
+      's2.rdvTimeFrom':'Hora de carga <span class="req">*</span>',
+      's2.rdvTimeTo':'Hora de entrega <span class="req">*</span>',
+      'err.datePast':'La fecha no puede estar en el pasado.',
+      'err.dateOrder':'La entrega no puede ser anterior a la carga.',
+      'recap.dateFrom':'Carga',
+      'recap.dateTo':'Entrega',
+      'recap.urgent':'Urgente',
+      'recap.express':'Entrega exprés (mismo día)',
+      'recap.rdv':'Cita',
+      'rdv.charg':'carga',
+      'rdv.livr':'entrega',
+      'rdv.at':'a las',
+      'mail.dateFrom':'Fecha de carga: ',
+      'mail.dateTo':'Fecha de entrega: ',
+      'mail.urgent':'URGENTE: sí',
+      'mail.express':'Entrega exprés (mismo día): sí',
+      'mail.rdv':'Cita: ',
+      'mail.urgentTag':'URGENTE',
+      'mail.expressTag':'EXPRÉS',
+      'mail.yes':'Sí',
+      'mail.no':'No',
+
       's2.fromLabel':'Ciudad de origen <span class="req">*</span>','s2.fromPh':'Ciudad o código postal',
       's2.toLabel':'Ciudad de destino <span class="req">*</span>','s2.toPh':'Ciudad o código postal',
       's3.title':'Su mercancía','s3.sub':'Uno o varios tipos de palés / mercancías que transportar.',
@@ -708,6 +816,8 @@
       if(err){ err.classList.toggle('show', !valid); }
       if(!valid){ ok = false; }
     });
+    /* Dates, express & appointment (step 2) */
+    if(n === 2 && !validateTiming()){ ok = false; }
     /* Hayon: once "Hayon" is selected, where it's needed becomes mandatory. */
     if(n === 4){
       var hayonCode = getChoiceValue('hayonGroup');
@@ -763,6 +873,136 @@
     if(!group) return '';
     var sel = group.querySelector('.choice-btn.selected');
     return sel ? sel.getAttribute('data-value') : '';
+  }
+
+  /* ---------- Dates, urgency, express & appointment (step 2) ---------- */
+  var fDateFrom = document.getElementById('f-date-depart');
+  var fDateTo = document.getElementById('f-date-arrivee');
+  var fUrgent = document.getElementById('f-urgent');
+  var fExpress = document.getElementById('f-express');
+  var fRdv = document.getElementById('f-rdv');
+  var rdvBox = document.getElementById('rdvBox');
+  var rdvFromWrap = document.getElementById('rdvTimeFromWrap');
+  var rdvToWrap = document.getElementById('rdvTimeToWrap');
+  var fRdvFrom = document.getElementById('f-rdv-charg');
+  var fRdvTo = document.getElementById('f-rdv-livr');
+
+  function todayISO(){
+    var d = new Date();
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    return d.toISOString().slice(0, 10);
+  }
+  function fmtDate(iso){
+    if(!iso){ return ''; }
+    var p = iso.split('-');
+    var loc = currentLang === 'es' ? 'es-ES' : (currentLang === 'en' ? 'en-GB' : 'fr-FR');
+    try{
+      return new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString(loc, {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+    }catch(e){ return p[2] + '/' + p[1] + '/' + p[0]; }
+  }
+  function syncDateLimits(){
+    var today = todayISO();
+    fDateFrom.min = today;
+    fDateTo.min = (fDateFrom.value && fDateFrom.value > today) ? fDateFrom.value : today;
+    if(fExpress.checked){
+      fDateTo.value = fDateFrom.value;
+      fDateTo.readOnly = true;
+    } else {
+      fDateTo.readOnly = false;
+    }
+    /* delivery can never stay before pickup */
+    if(!fExpress.checked && fDateFrom.value && fDateTo.value && fDateTo.value < fDateFrom.value){ fDateTo.value = fDateFrom.value; }
+  }
+  function syncOptionCards(){
+    [fUrgent, fExpress, fRdv].forEach(function(cb){
+      var card = cb.closest('.opt-card');
+      if(card){ card.classList.toggle('checked', cb.checked); }
+    });
+  }
+  function syncRdv(){
+    var on = fRdv.checked;
+    rdvBox.hidden = !on;
+    var code = on ? getChoiceValue('rdvGroup') : '';
+    var needFrom = (code === 'charg' || code === 'both');
+    var needTo = (code === 'livr' || code === 'both');
+    rdvFromWrap.hidden = !needFrom;
+    rdvToWrap.hidden = !needTo;
+    if(!needFrom){ fRdvFrom.value = ''; }
+    if(!needTo){ fRdvTo.value = ''; }
+    if(!on){
+      var g = document.getElementById('rdvGroup');
+      if(g){ g.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('selected'); }); }
+      var e = document.getElementById('rdvWhereError'); if(e){ e.classList.remove('show'); }
+    }
+  }
+  fDateFrom.addEventListener('change', syncDateLimits);
+  fDateFrom.addEventListener('input', syncDateLimits);
+  fExpress.addEventListener('change', function(){
+    if(fExpress.checked){
+      if(!fDateFrom.value){ fDateFrom.value = todayISO(); }
+      fUrgent.checked = true;
+    }
+    syncDateLimits(); syncOptionCards();
+  });
+  fUrgent.addEventListener('change', syncOptionCards);
+  fRdv.addEventListener('change', function(){ syncRdv(); syncOptionCards(); });
+  document.getElementById('rdvRemove').addEventListener('click', function(){
+    fRdv.checked = false; syncRdv(); syncOptionCards();
+    [fRdvFrom, fRdvTo].forEach(function(inp){ inp.classList.remove('field-error'); var f = inp.closest('.field'); var m = f && f.querySelector('.error-msg'); if(m){ m.classList.remove('show'); } });
+    var card = fRdv.closest('.opt-card'); if(card && card.scrollIntoView){ try{ card.scrollIntoView({block:'nearest',behavior:'smooth'}); }catch(e){} }
+  });
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('#rdvGroup .choice-btn');
+    if(b){ syncRdv(); var er = document.getElementById('rdvWhereError'); if(er){ er.classList.remove('show'); } }
+  });
+  syncDateLimits();
+
+  function setExtra(id, show){
+    var el = document.getElementById(id);
+    if(el){ el.classList.toggle('show', !!show); }
+  }
+  function validateTiming(){
+    var ok = true, today = todayISO();
+    var df = fDateFrom.value, dt = fDateTo.value;
+    var pastErr = !!(df && df < today);
+    var orderErr = !!(df && dt && dt < df);
+    setExtra('dateFromPast', pastErr);
+    setExtra('dateToOrder', orderErr);
+    if(pastErr){ fDateFrom.classList.add('field-error'); ok = false; }
+    if(orderErr){ fDateTo.classList.add('field-error'); ok = false; }
+    if(fRdv.checked){
+      var code = getChoiceValue('rdvGroup');
+      var whereErr = document.getElementById('rdvWhereError');
+      if(!code){
+        ok = false;
+        if(whereErr){ whereErr.classList.add('show'); }
+      } else {
+        if(whereErr){ whereErr.classList.remove('show'); }
+        [[fRdvFrom, rdvFromWrap], [fRdvTo, rdvToWrap]].forEach(function(pair){
+          var inp = pair[0], wrap = pair[1];
+          if(wrap.hidden){ inp.classList.remove('field-error'); return; }
+          var valid = !!inp.value;
+          inp.classList.toggle('field-error', !valid);
+          var err = wrap.querySelector('.error-msg');
+          if(err){ err.classList.toggle('show', !valid); }
+          if(!valid){ ok = false; }
+        });
+      }
+    }
+    return ok;
+  }
+  function collectTiming(){
+    var code = fRdv.checked ? getChoiceValue('rdvGroup') : '';
+    var parts = [];
+    if((code === 'charg' || code === 'both') && fRdvFrom.value){ parts.push(t('rdv.charg') + ' ' + t('rdv.at') + ' ' + fRdvFrom.value); }
+    if((code === 'livr' || code === 'both') && fRdvTo.value){ parts.push(t('rdv.livr') + ' ' + t('rdv.at') + ' ' + fRdvTo.value); }
+    return {
+      from: fmtDate(fDateFrom.value),
+      to: fmtDate(fDateTo.value),
+      urgent: fUrgent.checked,
+      express: fExpress.checked,
+      rdv: parts.join(' · ')
+    };
   }
 
   /* ---------- Merchandise rows ---------- */
@@ -931,6 +1171,15 @@
     var besoin = document.getElementById('f-besoin').value;
     var merch = collectMerch();
 
+    var tm = collectTiming();
+    var timingHtml = '<div><b>' + t('recap.dateFrom') + '</b> : ' + escapeHtml(tm.from) + '</div>' +
+      '<div><b>' + t('recap.dateTo') + '</b> : ' + escapeHtml(tm.to) + '</div>';
+    if(tm.rdv){ timingHtml += '<div><b>' + t('recap.rdv') + '</b> : ' + escapeHtml(tm.rdv) + '</div>'; }
+    if(tm.urgent || tm.express){
+      timingHtml += '<div>' + (tm.urgent ? '<span class="recap-tag">' + t('recap.urgent') + '</span>' : '') +
+        (tm.express ? '<span class="recap-tag">' + t('recap.express') + '</span>' : '') + '</div>';
+    }
+
     var merchHtml = merch.map(function(m){
       var line = '<div>' + (m.type === 'camion' ? '' : m.qty + '× ') + '<b>' + m.typeLabel + '</b>';
       if(m.weight){ line += ' — ' + m.weight + ' kg (' + m.weightMode + ')'; }
@@ -944,7 +1193,7 @@
       '<div class="recap-block"><h4>'+t('recap.contact')+' <a href="#" data-goto="1">'+t('recap.edit')+'</a></h4>'+
         '<div class="recap-content"><div><b>'+escapeHtml(nom)+'</b></div><div>'+escapeHtml(tel)+' · '+escapeHtml(email)+'</div></div></div>'+
       '<div class="recap-block"><h4>'+t('recap.route')+' <a href="#" data-goto="2">'+t('recap.edit')+'</a></h4>'+
-        '<div class="recap-content"><div>'+escapeHtml(depart)+' → '+escapeHtml(arrivee)+'</div></div></div>'+
+        '<div class="recap-content"><div>'+escapeHtml(depart)+' → '+escapeHtml(arrivee)+'</div>'+timingHtml+'</div></div>'+
       '<div class="recap-block"><h4>'+t('recap.goods')+' <a href="#" data-goto="3">'+t('recap.edit')+'</a></h4>'+
         '<div class="recap-content">'+(merchHtml || '<div>—</div>')+'</div></div>'+
       '<div class="recap-block"><h4>'+t('recap.vehicle')+' <a href="#" data-goto="4">'+t('recap.edit')+'</a></h4>'+
@@ -991,6 +1240,7 @@
     /* Defense in depth: re-check the steps that carry mandatory fields
        (weight, hayon location) before anything is actually sent, in case
        the recap was reached any other way than the normal "next" flow. */
+    if(!validateStep(2)){ goToStep(2); return; }
     if(!validateStep(3)){ goToStep(3); return; }
     if(!validateStep(4)){ goToStep(4); return; }
 
@@ -1007,6 +1257,7 @@
     if(hayonCode === 'hayon' && hayonLocCode){ hayon += ' (' + t('hayonLoc.'+hayonLocCode) + ')'; }
     var besoin = document.getElementById('f-besoin').value;
     var merch = collectMerch();
+    var tm = collectTiming();
 
     var lines = [
       t('mail.intro'),
@@ -1019,9 +1270,14 @@
       t('mail.routeHeader'),
       t('mail.from') + depart,
       t('mail.to') + arrivee,
-      '',
-      t('mail.goodsHeader')
+      t('mail.dateFrom') + tm.from,
+      t('mail.dateTo') + tm.to
     ];
+    if(tm.urgent){ lines.push(t('mail.urgent')); }
+    if(tm.express){ lines.push(t('mail.express')); }
+    if(tm.rdv){ lines.push(t('mail.rdv') + tm.rdv); }
+    lines.push('');
+    lines.push(t('mail.goodsHeader'));
     merch.forEach(function(m, i){
       var l = (i+1) + '. ' + (m.type === 'camion' ? '' : m.qty + ' x ') + m.typeLabel;
       if(m.weight){ l += ' — ' + m.weight + ' kg (' + m.weightMode + ')'; }
@@ -1035,7 +1291,8 @@
     lines.push(t('mail.equip') + hayon);
     if(besoin){ lines.push(''); lines.push(t('mail.specificHeader')); lines.push(besoin); }
 
-    var subjectText = DEVIS_MAIL_CONFIG.subjectPrefix + (nom || t('mail.fallbackName'));
+    var subjectTags = (tm.urgent ? '[' + t('mail.urgentTag') + '] ' : '') + (tm.express ? '[' + t('mail.expressTag') + '] ' : '');
+    var subjectText = subjectTags + DEVIS_MAIL_CONFIG.subjectPrefix + (nom || t('mail.fallbackName'));
     var bodyText = lines.join('\n');
 
     var submitBtn = form.querySelector('.wizard-step[data-step="5"] button[type="submit"]');
@@ -1055,6 +1312,11 @@
       'E-mail': email,
       'Départ': depart,
       'Arrivée': arrivee,
+      'Date de chargement': tm.from,
+      'Date de livraison': tm.to,
+      'Urgent': tm.urgent ? t('mail.yes') : t('mail.no'),
+      'Livraison express (jour même)': tm.express ? t('mail.yes') : t('mail.no'),
+      'Rendez-vous': tm.rdv || t('mail.no'),
       'Véhicule': vehicule,
       'Équipement': hayon,
       'Détail de la demande': bodyText
@@ -1112,6 +1374,8 @@
     form.querySelectorAll('.error-msg.show').forEach(function(el){ el.classList.remove('show'); });
     var locField = document.getElementById('hayonLocationField');
     if(locField){ locField.hidden = true; }
+    syncRdv(); syncOptionCards(); syncDateLimits();
+    ['dateFromPast','dateToOrder','rdvWhereError'].forEach(function(id){ setExtra(id, false); });
     if(merchList){
       merchList.innerHTML = '';
       addMerchRow();
