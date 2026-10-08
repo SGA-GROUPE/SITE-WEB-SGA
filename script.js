@@ -12,7 +12,7 @@
       if(requested) return;
       requested = true;
       var s = document.createElement('script');
-      s.src = 'cities.js?v=fc4e887a';
+      s.src = 'cities.js?v=7b860ea6';
       s.async = true;
       s.onload = function(){
         SGA_CITIES.push.apply(SGA_CITIES, window.__SGA_CITIES || []);
@@ -191,7 +191,7 @@
       'stat.collab':'Transporteurs partenaires','stat.clients':'Clients','stat.sites':'Sites en France','stat.response':'Réponse devis',
       'trust.label':'Ils nous font confiance',
       'about.eyebrow':'Qui sommes-nous','about.title':'Une équipe jeune et dynamique, ancrée dans le transport',
-      'about.text':"SGA est une entreprise encrée depuis plusieurs années dans l'organisation de transport, de la logistique et de l'affrètement. Nous sommes une équipe jeune et dynamique à l'écoute des besoins de nos clients. Capable d'organiser tous types de transports sur le plan multimodal, notre réactivité nous a permis de nous déployer au niveau international.",
+      'about.text':"SGA est une entreprise ancrée depuis plusieurs années dans l'organisation de transport, de la logistique et de l'affrètement. Nous sommes une équipe jeune et dynamique à l'écoute des besoins de nos clients. Capable d'organiser tous types de transports sur le plan multimodal, notre réactivité nous a permis de nous déployer au niveau international.",
       'about.notion.transport':'Transport','about.notion.logistique':'Logistique','about.notion.affretement':'Affrètement','about.notion.multimodal':'Multimodal','about.notion.international':'International',
       'about.note':"Un large réseau de transporteurs sélectionnés pour répondre à chaque besoin, en France comme à l'international.",
       'about.photoTag':'Nos bureaux',
