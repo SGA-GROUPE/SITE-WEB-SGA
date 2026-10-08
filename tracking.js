@@ -1,28 +1,24 @@
-/* SGA Groupe - suivi des conversions Google Ads, uniquement après accord du visiteur.
-   Inactif tant qu'aucun identifiant Google Ads n'est renseigné (aucun cookie, aucun bandeau). */
+/* SGA Groupe - mesure d'audience (Google Analytics) et conversions Google Ads, uniquement après accord du visiteur.
+   La balise Google (head) démarre en mode Consentement : tout est refusé tant que le visiteur n'a pas accepté. */
 (function(){
   var CFG = { id:'', quote:'', call:'' };
-  if(!/^AW-\d+$/.test(CFG.id)){ return; }
+  var ADS=/^AW-\d+$/.test(CFG.id);
+  window.dataLayer=window.dataLayer||[];
+  if(!window.gtag){ window.gtag=function(){ window.dataLayer.push(arguments); }; }
   var KEY='sga-consent', MAX=1000*60*60*24*180, loaded=false, box=null;
   var T={
-    fr:{txt:"Nous utilisons un cookie de mesure publicitaire (Google Ads) pour savoir si une annonce a mené à une demande de devis. Il n'est déposé qu'avec votre accord.",ok:"Accepter",no:"Refuser",more:"En savoir plus",link:"Cookies",legal:"mentions-legales",aria:"Gestion des cookies"},
-    en:{txt:"We use an advertising measurement cookie (Google Ads) to know whether an ad led to a quote request. It is only set with your consent.",ok:"Accept",no:"Decline",more:"Learn more",link:"Cookies",legal:"mentions-legales",aria:"Cookie settings"},
-    es:{txt:"Usamos una cookie de medición publicitaria (Google Ads) para saber si un anuncio ha generado una solicitud de presupuesto. Solo se instala con su consentimiento.",ok:"Aceptar",no:"Rechazar",more:"Más información",link:"Cookies",legal:"mentions-legales",aria:"Gestión de cookies"}
+    fr:{txt:"Nous utilisons des cookies de mesure d'audience et de performance publicitaire (Google) pour améliorer ce site et savoir si une annonce a mené à une demande de devis. Ils ne sont déposés qu'avec votre accord.",ok:"Accepter",no:"Refuser",more:"En savoir plus",link:"Cookies",legal:"mentions-legales",aria:"Gestion des cookies"},
+    en:{txt:"We use audience and advertising measurement cookies (Google) to improve this site and know whether an ad led to a quote request. They are only set with your consent.",ok:"Accept",no:"Decline",more:"Learn more",link:"Cookies",legal:"mentions-legales",aria:"Cookie settings"},
+    es:{txt:"Usamos cookies de medición de audiencia y publicidad (Google) para mejorar este sitio y saber si un anuncio ha generado una solicitud de presupuesto. Solo se instalan con su consentimiento.",ok:"Aceptar",no:"Rechazar",more:"Más información",link:"Cookies",legal:"mentions-legales",aria:"Gestión de cookies"}
   };
   function lang(){ var l=(document.documentElement.getAttribute('lang')||'fr').slice(0,2); return T[l]?l:'fr'; }
   function get(){ try{ var v=JSON.parse(localStorage.getItem(KEY)||'null'); if(v&&v.t&&Date.now()-v.t<MAX){ return v.v; } }catch(e){} return null; }
   function set(v){ try{ localStorage.setItem(KEY,JSON.stringify({v:v,t:Date.now()})); }catch(e){} }
-  function load(){
-    if(loaded){ return; } loaded=true;
-    window.dataLayer=window.dataLayer||[];
-    window.gtag=function(){ window.dataLayer.push(arguments); };
-    window.gtag('js',new Date());
-    window.gtag('config',CFG.id);
-    var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(CFG.id);
-    document.head.appendChild(s);
-  }
+  function upd(v){ window.gtag('consent','update',{ad_storage:v,ad_user_data:v,ad_personalization:v,analytics_storage:v}); }
+  function load(){ if(loaded){ return; } loaded=true; upd('granted'); }
   window.sgaTrack=function(kind){
     if(!loaded||get()!=='granted'){ return; }
+    if(!ADS){ return; }
     var label = kind==='quote' ? CFG.quote : CFG.call;
     if(!label || label.indexOf('__')===0){ return; }
     window.gtag('event','conversion',{send_to:CFG.id+'/'+label});
@@ -48,7 +44,7 @@
     box.setAttribute('aria-label',t.aria);
     box.innerHTML='<p>'+t.txt+' <a href="'+legal+'">'+t.more+'</a></p><div class="sc-b"><button type="button" class="sc-no">'+t.no+'</button><button type="button" class="sc-ok">'+t.ok+'</button></div>';
     box.querySelector('.sc-ok').onclick=function(){ set('granted'); hide(); load(); };
-    box.querySelector('.sc-no').onclick=function(){ set('denied'); hide(); };
+    box.querySelector('.sc-no').onclick=function(){ set('denied'); hide(); if(loaded){ loaded=false; upd('denied'); } };
   }
   function show(){
     css();
@@ -64,6 +60,7 @@
     host.insertBefore(a,host.firstChild); host.insertBefore(sep,a.nextSibling);
   }
   function init(){
+    if(ADS){ window.gtag('config',CFG.id); }
     footerLink();
     var c=get();
     if(c==='granted'){ load(); } else if(c===null){ show(); }
