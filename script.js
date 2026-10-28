@@ -12,7 +12,7 @@
       if(requested) return;
       requested = true;
       var s = document.createElement('script');
-      s.src = 'cities.js?v=7b860ea6';
+      s.src = 'cities.js?v=325f6e37';
       s.async = true;
       s.onload = function(){
         SGA_CITIES.push.apply(SGA_CITIES, window.__SGA_CITIES || []);
@@ -220,7 +220,7 @@
       'cta.title':'Prêt à optimiser votre transport ?','cta.text':'Un devis clair, une équipe réactive, un interlocuteur dédié à chaque étape.',
       'footer.tagline':"Affrètement, stockage et logistique — du local à l'international, sur tous les modes de transport.",
       'footer.navTitle':'Navigation','footer.contactTitle':'Contact',
-      'footer.rights':'SGA Groupe — Fret, Stockage, Logistique. Tous droits réservés.','footer.madeWith':'Site réalisé avec Claude',
+      'footer.rights':'SGA Groupe — Fret, Stockage, Logistique. Tous droits réservés.',
       'devis.eyebrow':'Devis en moins de 2 minutes','devis.title':'Demande de devis',
       'devis.sub':"Quelques informations et notre équipe revient vers vous avec une solution de transport adaptée.",
       'ps.contact':'Coordonnées','ps.route':'Trajet & dates','ps.goods':'Marchandise','ps.vehicle':'Véhicule','ps.recap':'Récap',
@@ -345,7 +345,7 @@
       'cta.title':'Ready to optimise your transport?','cta.text':'A clear quote, a responsive team, a dedicated contact at every step.',
       'footer.tagline':'Freight forwarding, storage and logistics — from local to international, across every transport mode.',
       'footer.navTitle':'Navigation','footer.contactTitle':'Contact',
-      'footer.rights':'SGA Groupe — Freight, Storage, Logistics. All rights reserved.','footer.madeWith':'Website built with Claude',
+      'footer.rights':'SGA Groupe — Freight, Storage, Logistics. All rights reserved.',
       'devis.eyebrow':'Quote in under 2 minutes','devis.title':'Quote request',
       'devis.sub':"A few details and our team will get back to you with a suitable transport solution.",
       'ps.contact':'Contact','ps.route':'Route & dates','ps.goods':'Goods','ps.vehicle':'Vehicle','ps.recap':'Summary',
@@ -470,7 +470,7 @@
       'cta.title':'¿Listo para optimizar su transporte?','cta.text':'Un presupuesto claro, un equipo ágil y un interlocutor dedicado en cada etapa.',
       'footer.tagline':'Transporte de mercancías, almacenaje y logística: de lo local a lo internacional, en todos los modos de transporte.',
       'footer.navTitle':'Navegación','footer.contactTitle':'Contacto',
-      'footer.rights':'SGA Groupe — Transporte, almacenaje, logística. Todos los derechos reservados.','footer.madeWith':'Sitio web creado con Claude',
+      'footer.rights':'SGA Groupe — Transporte, almacenaje, logística. Todos los derechos reservados.',
       'devis.eyebrow':'Presupuesto en menos de 2 minutos','devis.title':'Solicitud de presupuesto',
       'devis.sub':"Unos pocos datos y nuestro equipo le responderá con una solución de transporte adecuada.",
       'ps.contact':'Contacto','ps.route':'Trayecto y fechas','ps.goods':'Mercancía','ps.vehicle':'Vehículo','ps.recap':'Resumen',

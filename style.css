@@ -97,7 +97,7 @@
   .burger{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--surface-border);background:var(--bg-soft);align-items:center;justify-content:center;cursor:pointer;}
   .burger svg{width:20px;height:20px;}
   /* Desktop header: the nav sits in the free space between logo and actions (never overlaps, whatever the language). */
-  @media (min-width:981px){ .nav-inner{grid-template-columns:auto 1fr auto;} }
+  @media (min-width:981px){ .nav-inner{grid-template-columns:minmax(max-content,1fr) auto minmax(max-content,1fr);} }
   @media (min-width:981px) and (max-width:1399px){
     .nav-inner{gap:12px;}
     #site-header .wrap{padding:0 24px;}
